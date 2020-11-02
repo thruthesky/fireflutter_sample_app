@@ -13,6 +13,8 @@ class _RegisterScrreenState extends State<RegisterScrreen> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController displayNameController = TextEditingController();
   TextEditingController favoriteColorController = TextEditingController();
+
+  bool loading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,21 +42,29 @@ class _RegisterScrreenState extends State<RegisterScrreen> {
           ),
           RaisedButton(
             onPressed: () async {
+              loading = true;
               try {
                 User user = await ff.register({
                   'email': emailController.text,
                   'password': passwordController.text,
                   'displayName': displayNameController.text,
                   'favoriteColor': favoriteColorController.text
+                }, meta: {
+                  "public": {
+                    "notifyPost": true,
+                    "notifyComment": true,
+                  }
                 });
+                loading = false;
                 await Get.defaultDialog(
                     middleText: 'Welcome ' + user.displayName);
                 Get.toNamed('home');
               } catch (e) {
+                loading = false;
                 Get.snackbar('Error', e.toString());
               }
             },
-            child: Text('Register'),
+            child: loading ? CircularProgressIndicator() : Text('Register'),
           ),
         ],
       ),
