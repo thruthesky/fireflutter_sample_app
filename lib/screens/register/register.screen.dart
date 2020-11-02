@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RegisterScrreen extends StatefulWidget {
   @override
@@ -25,7 +26,9 @@ class _RegisterScrreenState extends State<RegisterScrreen> {
             decoration: InputDecoration(hintText: 'Password'),
           ),
           RaisedButton(
-            onPressed: () {},
+            onPressed: () async {
+              // User
+            },
             child: Text('Register'),
           ),
         ],
