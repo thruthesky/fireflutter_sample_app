@@ -1,5 +1,7 @@
+import 'package:fireflutter_sample_app/screens/home/home.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fireflutter/fireflutter.dart';
+import 'package:get/get.dart';
 
 FireFlutter ff = FireFlutter();
 
@@ -11,27 +13,11 @@ void main() async {
 class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: HomeScreen(),
-    );
-  }
-}
-
-class HomeScreen extends StatefulWidget {
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('FireFlutter'),
-      ),
-      body: Center(
-        child: Text('FireFlutter.init'),
-      ),
+    return GetMaterialApp(
+      initialRoute: 'home',
+      getPages: [
+        GetPage(name: 'home', page: () => HomeScreen()),
+      ],
     );
   }
 }
