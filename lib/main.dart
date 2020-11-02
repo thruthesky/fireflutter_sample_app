@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fireflutter/fireflutter.dart';
-
-FireFlutter ff = FireFlutter();
+import './global_variables.dart';
 
 void main() async {
   await ff.init();
