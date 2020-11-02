@@ -42,7 +42,7 @@ class _RegisterScrreenState extends State<RegisterScrreen> {
           ),
           RaisedButton(
             onPressed: () async {
-              loading = true;
+              setState(() => loading = true);
               try {
                 User user = await ff.register({
                   'email': emailController.text,
@@ -55,12 +55,16 @@ class _RegisterScrreenState extends State<RegisterScrreen> {
                     "notifyComment": true,
                   }
                 });
-                loading = false;
+                setState(() => loading = false);
                 await Get.defaultDialog(
-                    middleText: 'Welcome ' + user.displayName);
+                  middleText: 'Welcome ' + user.displayName,
+                  textConfirm: 'Ok',
+                  confirmTextColor: Colors.white,
+                  onConfirm: () => Get.back(),
+                );
                 Get.toNamed('home');
               } catch (e) {
-                loading = false;
+                setState(() => loading = false);
                 Get.snackbar('Error', e.toString());
               }
             },

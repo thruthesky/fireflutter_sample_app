@@ -1,4 +1,4 @@
-package com.example.fireflutter_sample_app
+package com.sonub.fireflutter
 
 import io.flutter.embedding.android.FlutterActivity
 

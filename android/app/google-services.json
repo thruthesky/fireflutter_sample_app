@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "389649476574",
+    "firebase_url": "https://fireflutter-test.firebaseio.com",
+    "project_id": "fireflutter-test",
+    "storage_bucket": "fireflutter-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389649476574:android:325835405d373f0f56cb4f",
+        "android_client_info": {
+          "package_name": "com.sonub.fireflutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "389649476574-efs1rlrnttfvmumpobtitbie4omcqd84.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4XDiZZinEC4MpvrZ5YKNxw4OHS1f-vVU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "389649476574-efs1rlrnttfvmumpobtitbie4omcqd84.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "389649476574-3pp2tstq9l5k8ecotn228v6b0gl905vp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sonub.fireflutter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
