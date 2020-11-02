@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>389649476574-3pp2tstq9l5k8ecotn228v6b0gl905vp.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.389649476574-3pp2tstq9l5k8ecotn228v6b0gl905vp</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCe2BoolOEIpBvLGexp9QTyF7qStRE_cR0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>389649476574</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.sonub.fireflutter</string>
+	<key>PROJECT_ID</key>
+	<string>fireflutter-test</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fireflutter-test.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:389649476574:ios:23cd30a938db5c2156cb4f</string>
+	<key>DATABASE_URL</key>
+	<string>https://fireflutter-test.firebaseio.com</string>
+</dict>
+</plist>
