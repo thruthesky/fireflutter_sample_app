@@ -7,6 +7,7 @@ This is a sample app to demonstrate how to use [FireFlutter](https://pub.dev/pac
 - You may refer the branches in the following order to see the gradual update of the sample app.
   - fireflutter-initialization
   - getx
+  - routes
   - register
   - register-2
-  - google-login
+  - social-login
