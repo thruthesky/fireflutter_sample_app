@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
-class RegisterScrreen extends StatefulWidget {
+class RegisterScreen extends StatefulWidget {
   @override
-  _RegisterScrreenState createState() => _RegisterScrreenState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _RegisterScrreenState extends State<RegisterScrreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController displayNameController = TextEditingController();

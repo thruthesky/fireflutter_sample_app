@@ -13,15 +13,31 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text('FireFlutter'),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            RaisedButton(
-              onPressed: () => Get.toNamed('register'),
-              child: Text('Register'),
-            )
-          ],
-        ),
+      body: Column(
+        children: [
+          Text('Routes and Screens'),
+          Divider(),
+          Row(
+            children: [
+              RaisedButton(
+                onPressed: () => Get.toNamed('register'),
+                child: Text('Register'),
+              ),
+              RaisedButton(
+                onPressed: () => Get.toNamed('login'),
+                child: Text('Login'),
+              ),
+              RaisedButton(
+                onPressed: () => Get.toNamed('profile'),
+                child: Text('Profile'),
+              ),
+              RaisedButton(
+                onPressed: () => Get.toNamed('logout'),
+                child: Text('Logout'),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
