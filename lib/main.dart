@@ -22,6 +22,7 @@ class _MainAppState extends State<MainApp> {
   @override
   void initState() {
     super.initState();
+    ff.translationsChange.listen((x) => setState(() => updateTranslations(x)));
   }
 
   @override
