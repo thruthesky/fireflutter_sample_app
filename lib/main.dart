@@ -1,4 +1,5 @@
 import 'package:fireflutter_sample_app/screens/admin/admin.screen.dart';
+import 'package:fireflutter_sample_app/screens/admin/admin.category.screen.dart';
 import 'package:fireflutter_sample_app/screens/home/home.screen.dart';
 import 'package:fireflutter_sample_app/screens/login/login.screen.dart';
 import 'package:fireflutter_sample_app/screens/profile/profile.screen.dart';
@@ -39,6 +40,7 @@ class _MainAppState extends State<MainApp> {
         GetPage(name: 'login', page: () => LoginScreen()),
         GetPage(name: 'profile', page: () => ProfileScreen()),
         GetPage(name: 'admin', page: () => AdminScreen()),
+        GetPage(name: 'admin-category', page: () => AdminCategoryScreen()),
       ],
     );
   }

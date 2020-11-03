@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AdminScreen extends StatefulWidget {
   @override
@@ -12,7 +13,14 @@ class _AdminScreenState extends State<AdminScreen> {
       appBar: AppBar(
         title: Text('Admin Screen'),
       ),
-      body: Container(),
+      body: Column(
+        children: [
+          RaisedButton(
+            onPressed: () => Get.toNamed('admin-category'),
+            child: Text('Forum Category'),
+          ),
+        ],
+      ),
     );
   }
 }
