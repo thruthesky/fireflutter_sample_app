@@ -48,7 +48,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text('Logout'),
               ),
             ],
-          )
+          ),
+          if (ff.isAdmin) ...[
+            Divider(),
+            RaisedButton(
+              onPressed: () => Get.toNamed('admin'),
+              child: Text('Admin Screen'),
+            ),
+          ],
         ],
       ),
     );
