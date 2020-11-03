@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SMS APP</string>
+    <string name="facebook_app_id">2760886707561630</string>
+    <string name="fb_login_protocol_scheme">fb2760886707561630</string>
+</resources>
