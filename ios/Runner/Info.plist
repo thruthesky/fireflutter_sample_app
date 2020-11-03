@@ -80,5 +80,12 @@
 			<string>fbauth2</string>
 			<string>fbshareextension</string>
 		</array>
+		<key>CFBundleLocalizations</key>
+		<array>
+			<string>en</string>
+			<string>ch</string>
+			<string>ja</string>
+			<string>ko</string>
+		</array>
 	</dict>
 </plist>
