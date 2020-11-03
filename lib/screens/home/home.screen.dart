@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -12,8 +13,31 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text('FireFlutter'),
       ),
-      body: Center(
-        child: Text('FireFlutter.init with GetX'),
+      body: Column(
+        children: [
+          Text('Routes and Screens'),
+          Divider(),
+          Row(
+            children: [
+              RaisedButton(
+                onPressed: () => Get.toNamed('register'),
+                child: Text('Register'),
+              ),
+              RaisedButton(
+                onPressed: () => Get.toNamed('login'),
+                child: Text('Login'),
+              ),
+              RaisedButton(
+                onPressed: () => Get.toNamed('profile'),
+                child: Text('Profile'),
+              ),
+              RaisedButton(
+                onPressed: () => Get.toNamed('logout'),
+                child: Text('Logout'),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
