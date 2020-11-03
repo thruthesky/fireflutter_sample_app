@@ -1,3 +1,4 @@
+import 'package:fireflutter_sample_app/global_variables.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,8 +16,19 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Column(
         children: [
-          Text('Routes and Screens'),
+          Text('User Information'),
+          StreamBuilder(
+              stream: ff.userChange,
+              builder: (context, snapshot) {
+                if (ff.userIsLoggedIn) {
+                  return Text(
+                      'Email: ${ff.user.email}, displayName: ${ff.user.displayName}');
+                } else {
+                  return Text('You are not logged in.');
+                }
+              }),
           Divider(),
+          Text('User Buttons'),
           Row(
             children: [
               RaisedButton(
@@ -32,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text('Profile'),
               ),
               RaisedButton(
-                onPressed: () => Get.toNamed('logout'),
+                onPressed: ff.logout,
                 child: Text('Logout'),
               ),
             ],
