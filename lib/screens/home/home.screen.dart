@@ -12,7 +12,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('FireFlutter'),
+        title: Text('app-name'.tr),
       ),
       body: Column(
         children: [

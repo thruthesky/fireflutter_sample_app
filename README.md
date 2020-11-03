@@ -11,3 +11,4 @@ This is a sample app to demonstrate how to use [FireFlutter](https://pub.dev/pac
   - register
   - register-2
   - social-login
+  - translations
