@@ -14,3 +14,5 @@ This is a sample app to demonstrate how to use [FireFlutter](https://pub.dev/pac
   - translations
   - admin-page
   - forum-admin
+  - forum-edit
+  - photo-upload
