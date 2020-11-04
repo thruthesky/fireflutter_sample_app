@@ -9,6 +9,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<LoginScreen> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +53,33 @@ class _RegisterScreenState extends State<LoginScreen> {
                   Get.snackbar('Error', e.toString());
                 }
               },
-            )
+            ),
+          SizedBox(
+            height: 64,
+          ),
+          Text('Eamil & Password Login'),
+          Divider(),
+          TextFormField(
+            controller: emailController,
+            decoration: InputDecoration(hintText: 'Email address'),
+          ),
+          TextFormField(
+            controller: passwordController,
+            decoration: InputDecoration(hintText: 'Password'),
+          ),
+          RaisedButton(
+            onPressed: () async {
+              try {
+                await ff.login(
+                    email: emailController.text,
+                    password: passwordController.text);
+                Get.toNamed('home');
+              } catch (e) {
+                Get.snackbar('Error', e.toString());
+              }
+            },
+            child: Text('Login'),
+          ),
         ],
       ),
     );
