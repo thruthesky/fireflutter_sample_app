@@ -38,6 +38,7 @@ class _ForumEditScreenState extends State<ForumEditScreen> {
       titleController.text = post['title'];
       contentController.text = post['content'];
       category = post['category'];
+      files = post['files'] ?? [];
     }
   }
 
@@ -144,10 +145,25 @@ class _ForumEditScreenState extends State<ForumEditScreen> {
           Wrap(
             children: [
               for (String url in files)
-                SizedBox(
-                  child: Image.network(url),
-                  width: 100,
-                  height: 100,
+                Stack(
+                  children: [
+                    SizedBox(
+                      child: Image.network(url),
+                      width: 100,
+                      height: 100,
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.delete),
+                      onPressed: () async {
+                        try {
+                          await ff.deleteFile(url);
+                          setState(() => files.remove(url));
+                        } catch (e) {
+                          Get.snackbar('Error', e.toString());
+                        }
+                      },
+                    ),
+                  ],
                 ),
             ],
           ),
