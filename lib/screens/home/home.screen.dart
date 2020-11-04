@@ -56,6 +56,16 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Text('Admin Screen'),
             ),
           ],
+          Divider(),
+          Row(
+            children: [
+              RaisedButton(
+                onPressed: () =>
+                    Get.toNamed('forum-edit', arguments: {'category': 'qna'}),
+                child: Text('QnA'),
+              ),
+            ],
+          ),
         ],
       ),
     );
