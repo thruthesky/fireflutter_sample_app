@@ -66,21 +66,26 @@ class _ForumListScreenState extends State<ForumListScreen> {
                 itemBuilder: (context, i) {
                   Map<String, dynamic> post = forum.posts[i];
                   return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          post['title'],
-                          style: TextStyle(fontSize: 22),
-                        ),
-                        Container(
-                          child: Text(post['content']),
-                          color: Colors.grey[200],
-                          margin: EdgeInsets.only(top: 16),
-                          padding: EdgeInsets.all(16),
-                          width: double.infinity,
-                        ),
-                        Divider(),
-                      ]);
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        post['title'],
+                        style: TextStyle(fontSize: 22),
+                      ),
+                      Container(
+                        child: Text(post['content']),
+                        color: Colors.grey[200],
+                        margin: EdgeInsets.only(top: 16),
+                        padding: EdgeInsets.all(16),
+                        width: double.infinity,
+                      ),
+
+                      /// Display uploaded images.
+                      if (post['files'] != null)
+                        for (String url in post['files']) Image.network(url),
+                      Divider(),
+                    ],
+                  );
                 },
               ),
               if (forum.inLoading) CircularProgressIndicator(),
