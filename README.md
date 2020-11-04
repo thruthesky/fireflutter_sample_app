@@ -11,6 +11,7 @@ This is a sample app to demonstrate how to use [FireFlutter](https://pub.dev/pac
   - register. User registration.
   - register-v2. add more code on register page
   - social-login. social login. Google, Apple, Facebook.
+  - login-with-email-password.
   - translations. text translation.
   - admin-page. adding admin page
   - category-admin. adding category management page
