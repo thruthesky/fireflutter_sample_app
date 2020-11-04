@@ -62,7 +62,17 @@ class _HomeScreenState extends State<HomeScreen> {
               RaisedButton(
                 onPressed: () =>
                     Get.toNamed('forum-edit', arguments: {'category': 'qna'}),
-                child: Text('QnA'),
+                child: Text('Create a Post'),
+              ),
+              RaisedButton(
+                onPressed: () =>
+                    Get.toNamed('forum-list', arguments: {'category': 'qna'}),
+                child: Text('QnA Forum'),
+              ),
+              RaisedButton(
+                onPressed: () => Get.toNamed('forum-list',
+                    arguments: {'category': 'discussion'}),
+                child: Text('Discussion Forum'),
               ),
             ],
           ),
