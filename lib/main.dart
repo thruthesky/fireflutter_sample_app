@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import './global_variables.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await ff.init();
   runApp(MainApp());
 }
