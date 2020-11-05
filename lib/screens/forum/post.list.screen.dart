@@ -113,6 +113,16 @@ class PostButtons extends StatelessWidget {
         RaisedButton(
           onPressed: () async {
             try {
+              await ff.deletePost(post['id']);
+            } catch (e) {
+              Get.snackbar('Error', e.toString());
+            }
+          },
+          child: Text('Delete'),
+        ),
+        RaisedButton(
+          onPressed: () async {
+            try {
               await ff.vote(
                 postId: post['id'],
                 choice: VoteChoice.like,

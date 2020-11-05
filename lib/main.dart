@@ -30,8 +30,13 @@ class _MainAppState extends State<MainApp> {
   void initState() {
     super.initState();
     ff.translationsChange.listen((x) => setState(() => updateTranslations(x)));
-    Timer(Duration(milliseconds: 200),
-        () => Get.toNamed('forum-list', arguments: {'category': 'qna'}));
+    Timer(Duration(milliseconds: 200), () {
+      // Get.toNamed(
+      //   'forum-list',
+      //   arguments: {'category': 'qna'},
+      // );
+      Get.toNamed('profile');
+    });
   }
 
   @override
