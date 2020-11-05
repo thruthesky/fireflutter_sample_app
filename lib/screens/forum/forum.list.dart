@@ -84,15 +84,27 @@ class _ForumListScreenState extends State<ForumListScreen> {
                       if (post['files'] != null)
                         for (String url in post['files']) Image.network(url),
 
-                      Row(children: [
-                        RaisedButton(
-                          onPressed: () => Get.toNamed(
-                            'forum-edit',
-                            arguments: {'post': post},
+                      Row(
+                        children: [
+                          RaisedButton(
+                            onPressed: () => Get.toNamed(
+                              'forum-edit',
+                              arguments: {'post': post},
+                            ),
+                            child: Text('Edit'),
                           ),
-                          child: Text('Edit'),
-                        ),
-                      ]),
+                          RaisedButton(
+                            onPressed: () async {
+                              try {
+                                await ff.deletePost(post['id']);
+                              } catch (e) {
+                                Get.snackbar('Error', e.toString());
+                              }
+                            },
+                            child: Text('Delete'),
+                          ),
+                        ],
+                      ),
                       Divider(),
                     ],
                   );
