@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 FireFlutter ff = FireFlutter();
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await ff.init();
   runApp(MainApp());
 }
