@@ -69,22 +69,41 @@ class _ForumListScreenState extends State<ForumListScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       PostSubject(post: post),
-
                       PostContent(post: post),
-
-                      /// Display uploaded images.
-                      if (post['files'] != null)
-                        for (String url in post['files']) Image.network(url),
-
-                      Row(children: [
-                        RaisedButton(
-                          onPressed: () => Get.toNamed(
-                            'forum-edit',
-                            arguments: {'post': post},
+                      PostPhotos(
+                        post: post,
+                      ),
+                      Row(
+                        children: [
+                          PostEditButton(post: post),
+                          RaisedButton(
+                            onPressed: () async {
+                              try {
+                                await ff.vote(
+                                  postId: post['id'],
+                                  choice: VoteChoice.like,
+                                );
+                              } catch (e) {
+                                Get.snackbar('Error', e.toString());
+                              }
+                            },
+                            child: Text('Like ${post['likes'] ?? ''}'),
                           ),
-                          child: Text('Edit'),
-                        ),
-                      ]),
+                          TextButton(
+                            onPressed: () async {
+                              try {
+                                await ff.vote(
+                                  postId: post['id'],
+                                  choice: VoteChoice.dislike,
+                                );
+                              } catch (e) {
+                                Get.snackbar('Error', e.toString());
+                              }
+                            },
+                            child: Text('Dislike ${post['dislikes'] ?? ''}'),
+                          ),
+                        ],
+                      ),
                       Divider(),
                     ],
                   );
@@ -99,6 +118,26 @@ class _ForumListScreenState extends State<ForumListScreen> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class PostEditButton extends StatelessWidget {
+  const PostEditButton({
+    Key key,
+    @required this.post,
+  }) : super(key: key);
+
+  final Map<String, dynamic> post;
+
+  @override
+  Widget build(BuildContext context) {
+    return RaisedButton(
+      onPressed: () => Get.toNamed(
+        'forum-edit',
+        arguments: {'post': post},
+      ),
+      child: Text('Edit'),
     );
   }
 }
@@ -137,5 +176,27 @@ class PostSubject extends StatelessWidget {
       post['title'],
       style: TextStyle(fontSize: 22),
     );
+  }
+}
+
+class PostPhotos extends StatelessWidget {
+  PostPhotos({
+    Key key,
+    @required this.post,
+  }) : super(key: key);
+
+  final Map<String, dynamic> post;
+  @override
+  Widget build(BuildContext context) {
+    /// Display uploaded images.
+    if (post['files'] == null) {
+      return Container();
+    } else {
+      return Column(
+        children: [
+          for (String url in post['files']) Image.network(url),
+        ],
+      );
+    }
   }
 }
