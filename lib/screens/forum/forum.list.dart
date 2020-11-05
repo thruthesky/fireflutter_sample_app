@@ -68,17 +68,9 @@ class _ForumListScreenState extends State<ForumListScreen> {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        post['title'],
-                        style: TextStyle(fontSize: 22),
-                      ),
-                      Container(
-                        child: Text(post['content']),
-                        color: Colors.grey[200],
-                        margin: EdgeInsets.only(top: 16),
-                        padding: EdgeInsets.all(16),
-                        width: double.infinity,
-                      ),
+                      PostSubject(post: post),
+
+                      PostContent(post: post),
 
                       /// Display uploaded images.
                       if (post['files'] != null)
@@ -107,6 +99,43 @@ class _ForumListScreenState extends State<ForumListScreen> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class PostContent extends StatelessWidget {
+  const PostContent({
+    Key key,
+    @required this.post,
+  }) : super(key: key);
+
+  final Map<String, dynamic> post;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text(post['content']),
+      color: Colors.grey[200],
+      margin: EdgeInsets.only(top: 16),
+      padding: EdgeInsets.all(16),
+      width: double.infinity,
+    );
+  }
+}
+
+class PostSubject extends StatelessWidget {
+  const PostSubject({
+    Key key,
+    @required this.post,
+  }) : super(key: key);
+
+  final Map<String, dynamic> post;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      post['title'],
+      style: TextStyle(fontSize: 22),
     );
   }
 }
