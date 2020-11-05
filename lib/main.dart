@@ -15,6 +15,7 @@ import 'dart:ui' as ui;
 import './global_variables.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await ff.init();
   runApp(MainApp());
 }
@@ -29,8 +30,8 @@ class _MainAppState extends State<MainApp> {
   void initState() {
     super.initState();
     ff.translationsChange.listen((x) => setState(() => updateTranslations(x)));
-    Timer(Duration(milliseconds: 200),
-        () => Get.toNamed('forum-list', arguments: {'category': 'qna'}));
+    // Timer(Duration(milliseconds: 200),
+    //     () => Get.toNamed('forum-list', arguments: {'category': 'qna'}));
   }
 
   @override
