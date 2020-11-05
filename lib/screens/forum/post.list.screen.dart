@@ -73,9 +73,7 @@ class _ForumListScreenState extends State<ForumListScreen> {
                     children: [
                       PostSubject(post: post),
                       PostContent(post: post),
-                      DisplayPhotos(
-                        document: post,
-                      ),
+                      DisplayPhotos(files: post['files']),
                       PostButtons(post: post),
                       Divider(),
                       CommentForm(post: post),

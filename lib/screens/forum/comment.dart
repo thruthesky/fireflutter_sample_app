@@ -1,6 +1,7 @@
 import 'package:fireflutter/fireflutter.dart';
 import 'package:fireflutter_sample_app/global_variables.dart';
 import 'package:fireflutter_sample_app/screens/forum/comment.form.dart';
+import 'package:fireflutter_sample_app/screens/forum/display_photos.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 
@@ -51,6 +52,7 @@ class _CommentState extends State<Comment> {
                     child: Text(comment['content'],
                         style: TextStyle(fontSize: 16)),
                   ),
+                  DisplayPhotos(files: comment['files']),
                   Row(
                     children: [
                       TextButton(

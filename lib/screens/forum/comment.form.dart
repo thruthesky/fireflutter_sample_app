@@ -1,4 +1,5 @@
 import 'package:fireflutter_sample_app/global_variables.dart';
+import 'package:fireflutter_sample_app/screens/forum/edit_photos.dart';
 import 'package:fireflutter_sample_app/screens/forum/photo_upload.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -67,6 +68,9 @@ class _CommentFormState extends State<CommentForm> {
           LinearProgressIndicator(
             value: uploadProgress,
           ),
+        EditPotos(
+          files: files,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
