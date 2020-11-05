@@ -11,6 +11,7 @@ import 'dart:ui' as ui;
 import './global_variables.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await ff.init();
   runApp(MainApp());
 }
