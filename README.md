@@ -27,3 +27,4 @@ This is a sample app to demonstrate how to use [FireFlutter](https://pub.dev/pac
   - post-edit
   - post-delete
   - vote
+  - comment-crud

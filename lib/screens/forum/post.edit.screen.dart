@@ -1,7 +1,8 @@
 import 'package:fireflutter_sample_app/global_variables.dart';
+import 'package:fireflutter_sample_app/screens/forum/edit_photos.dart';
+import 'package:fireflutter_sample_app/screens/forum/photo_upload.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 
 class ForumEditScreen extends StatefulWidget {
   @override
@@ -70,48 +71,9 @@ class _ForumEditScreenState extends State<ForumEditScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              IconButton(
-                icon: Icon(Icons.camera_alt),
-                onPressed: () async {
-                  /// Get source of photo
-                  ImageSource source = await showDialog(
-                    context: context,
-                    builder: (_) => AlertDialog(
-                      title: Text('Choose Camera or Gallery'),
-                      content: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          TextButton(
-                            onPressed: () =>
-                                Get.back(result: ImageSource.camera),
-                            child: Text('Camera'),
-                          ),
-                          TextButton(
-                            onPressed: () =>
-                                Get.back(result: ImageSource.gallery),
-                            child: Text('Gallery'),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-
-                  if (source == null) return null;
-
-                  /// Upload photo
-                  try {
-                    final url = await ff.uploadFile(
-                      folder: 'forum-photos',
-                      source: source,
-                      progress: (p) => setState(() => uploadProgress = p),
-                    );
-
-                    files.add(url);
-                    setState(() => uploadProgress = 0);
-                  } catch (e) {
-                    Get.snackbar('Error', e.toString());
-                  }
-                },
+              PhotoUpload(
+                files: files,
+                onProgress: (p) => setState(() => uploadProgress = p),
               ),
               RaisedButton(
                 onPressed: () async {
@@ -142,30 +104,8 @@ class _ForumEditScreenState extends State<ForumEditScreen> {
             LinearProgressIndicator(
               value: uploadProgress,
             ),
-          Wrap(
-            children: [
-              for (String url in files)
-                Stack(
-                  children: [
-                    SizedBox(
-                      child: Image.network(url),
-                      width: 100,
-                      height: 100,
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.delete),
-                      onPressed: () async {
-                        try {
-                          await ff.deleteFile(url);
-                          setState(() => files.remove(url));
-                        } catch (e) {
-                          Get.snackbar('Error', e.toString());
-                        }
-                      },
-                    ),
-                  ],
-                ),
-            ],
+          EditPotos(
+            files: files,
           ),
         ],
       ),

@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:fireflutter_sample_app/screens/admin/admin.screen.dart';
 import 'package:fireflutter_sample_app/screens/admin/admin.category.screen.dart';
-import 'package:fireflutter_sample_app/screens/forum/forum.edit.screen.dart';
-import 'package:fireflutter_sample_app/screens/forum/forum.list.screen.dart';
+import 'package:fireflutter_sample_app/screens/forum/post.edit.screen.dart';
+import 'package:fireflutter_sample_app/screens/forum/post.list.screen.dart';
 import 'package:fireflutter_sample_app/screens/home/home.screen.dart';
 import 'package:fireflutter_sample_app/screens/login/login.screen.dart';
 import 'package:fireflutter_sample_app/screens/profile/profile.screen.dart';
@@ -30,8 +30,8 @@ class _MainAppState extends State<MainApp> {
   void initState() {
     super.initState();
     ff.translationsChange.listen((x) => setState(() => updateTranslations(x)));
-    // Timer(Duration(milliseconds: 200),
-    //     () => Get.toNamed('forum-list', arguments: {'category': 'qna'}));
+    Timer(Duration(milliseconds: 200),
+        () => Get.toNamed('forum-list', arguments: {'category': 'qna'}));
   }
 
   @override

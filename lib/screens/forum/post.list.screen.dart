@@ -1,5 +1,8 @@
 import 'package:fireflutter/fireflutter.dart';
 import 'package:fireflutter_sample_app/global_variables.dart';
+import 'package:fireflutter_sample_app/screens/forum/comment.dart';
+import 'package:fireflutter_sample_app/screens/forum/comment.form.dart';
+import 'package:fireflutter_sample_app/screens/forum/display_photos.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -70,41 +73,15 @@ class _ForumListScreenState extends State<ForumListScreen> {
                     children: [
                       PostSubject(post: post),
                       PostContent(post: post),
-                      PostPhotos(
-                        post: post,
+                      DisplayPhotos(
+                        document: post,
                       ),
-                      Row(
-                        children: [
-                          PostEditButton(post: post),
-                          RaisedButton(
-                            onPressed: () async {
-                              try {
-                                await ff.vote(
-                                  postId: post['id'],
-                                  choice: VoteChoice.like,
-                                );
-                              } catch (e) {
-                                Get.snackbar('Error', e.toString());
-                              }
-                            },
-                            child: Text('Like ${post['likes'] ?? ''}'),
-                          ),
-                          TextButton(
-                            onPressed: () async {
-                              try {
-                                await ff.vote(
-                                  postId: post['id'],
-                                  choice: VoteChoice.dislike,
-                                );
-                              } catch (e) {
-                                Get.snackbar('Error', e.toString());
-                              }
-                            },
-                            child: Text('Dislike ${post['dislikes'] ?? ''}'),
-                          ),
-                        ],
-                      ),
+                      PostButtons(post: post),
                       Divider(),
+                      CommentForm(post: post),
+                      if (post['comments'] != null)
+                        for (int j = 0; j < post['comments'].length; j++)
+                          Comment(post: post, index: j),
                     ],
                   );
                 },
@@ -118,6 +95,50 @@ class _ForumListScreenState extends State<ForumListScreen> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class PostButtons extends StatelessWidget {
+  const PostButtons({
+    Key key,
+    @required this.post,
+  }) : super(key: key);
+
+  final Map<String, dynamic> post;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        PostEditButton(post: post),
+        RaisedButton(
+          onPressed: () async {
+            try {
+              await ff.vote(
+                postId: post['id'],
+                choice: VoteChoice.like,
+              );
+            } catch (e) {
+              Get.snackbar('Error', e.toString());
+            }
+          },
+          child: Text('Like ${post['likes'] ?? ''}'),
+        ),
+        TextButton(
+          onPressed: () async {
+            try {
+              await ff.vote(
+                postId: post['id'],
+                choice: VoteChoice.dislike,
+              );
+            } catch (e) {
+              Get.snackbar('Error', e.toString());
+            }
+          },
+          child: Text('Dislike ${post['dislikes'] ?? ''}'),
+        ),
+      ],
     );
   }
 }
@@ -172,31 +193,18 @@ class PostSubject extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      post['title'],
-      style: TextStyle(fontSize: 22),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          post['title'],
+          style: TextStyle(fontSize: 22),
+        ),
+        Text(
+          post['id'],
+          style: TextStyle(fontSize: 10),
+        ),
+      ],
     );
-  }
-}
-
-class PostPhotos extends StatelessWidget {
-  PostPhotos({
-    Key key,
-    @required this.post,
-  }) : super(key: key);
-
-  final Map<String, dynamic> post;
-  @override
-  Widget build(BuildContext context) {
-    /// Display uploaded images.
-    if (post['files'] == null) {
-      return Container();
-    } else {
-      return Column(
-        children: [
-          for (String url in post['files']) Image.network(url),
-        ],
-      );
-    }
   }
 }
