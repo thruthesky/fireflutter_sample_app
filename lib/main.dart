@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './global_variables.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await ff.init();
   runApp(MainApp());
 }
