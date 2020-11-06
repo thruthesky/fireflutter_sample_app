@@ -71,9 +71,15 @@ class _RegisterScreenState extends State<LoginScreen> {
             onPressed: () async {
               try {
                 await ff.login(
-                    email: emailController.text,
-                    password: passwordController.text);
-                Get.toNamed('home');
+                  email: emailController.text,
+                  password: passwordController.text,
+                );
+                if (ff.user.phoneNumber.isNullOrBlank &&
+                    ff.appSetting('verify-after-login') == true) {
+                  Get.toNamed('phone-auth');
+                } else {
+                  Get.toNamed('home');
+                }
               } catch (e) {
                 Get.snackbar('Error', e.toString());
               }

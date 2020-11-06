@@ -30,7 +30,8 @@ class _RegisterScreenState extends State<ProfileScreen> {
                 StreamBuilder(
                     stream: ff.userChange,
                     builder: (context, snapshot) {
-                      if (ff.user.photoURL == null) return Container();
+                      if (ff.notLoggedIn || ff.user.photoURL == null)
+                        return Container();
                       return SizedBox(
                           width: 120,
                           height: 120,

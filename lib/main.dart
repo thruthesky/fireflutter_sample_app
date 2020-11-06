@@ -46,7 +46,7 @@ class _MainAppState extends State<MainApp> {
       //   'forum-list',
       //   arguments: {'category': 'qna'},
       // );
-      Get.toNamed('phone-auth');
+      // Get.toNamed('phone-auth');
     });
   }
 

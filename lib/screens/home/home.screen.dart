@@ -9,6 +9,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
+  void initState() {
+    super.initState();
+    ff.login(email: 'user@gmail.com', password: '12345a');
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -44,7 +50,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text('Profile'),
               ),
               RaisedButton(
-                onPressed: ff.logout,
+                onPressed: () async {
+                  try {
+                    await ff.logout();
+                    print('logged out');
+                  } catch (e) {
+                    print(e);
+                    Get.snackbar('Error', e.toString());
+                  }
+                },
                 child: Text('Logout'),
               ),
               RaisedButton(

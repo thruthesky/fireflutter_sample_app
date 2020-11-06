@@ -56,10 +56,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   }
                 });
                 setState(() => loading = false);
-                if (ff.appSetting('verify-after-register') == true)
+                if (ff.appSetting('verify-after-register') == true) {
                   Get.toNamed('phone-verification');
-                else
+                } else {
                   Get.toNamed('home');
+                }
               } catch (e) {
                 setState(() => loading = false);
                 Get.snackbar('Error', e.toString());
