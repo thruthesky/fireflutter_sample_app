@@ -44,7 +44,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             onPressed: () async {
               setState(() => loading = true);
               try {
-                User user = await ff.register({
+                await ff.register({
                   'email': emailController.text,
                   'password': passwordController.text,
                   'displayName': displayNameController.text,
@@ -56,13 +56,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   }
                 });
                 setState(() => loading = false);
-                // await Get.defaultDialog(
-                //   middleText: 'Welcome ' + user.displayName,
-                //   textConfirm: 'Ok',
-                //   confirmTextColor: Colors.white,
-                //   onConfirm: () => Get.back(),
-                // );
-                if (ff.appSetting('phone-verification') == true)
+                if (ff.appSetting('verify-after-register') == true)
                   Get.toNamed('phone-verification');
                 else
                   Get.toNamed('home');

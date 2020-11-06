@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
               builder: (context, snapshot) {
                 if (ff.userIsLoggedIn) {
                   return Text(
-                      'Email: ${ff.user.email}, displayName: ${ff.user.displayName}');
+                      'Email: ${ff.user.email}, displayName: ${ff.user.displayName}, Phone: ${ff.user.phoneNumber}');
                 } else {
                   return Text('You are not logged in.');
                 }
@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text('Logout'),
               ),
               RaisedButton(
-                onPressed: () => Get.toNamed('phone-verification'),
+                onPressed: () => Get.toNamed('phone-auth'),
                 child: Text('Phone Verificatoin'),
               ),
             ],

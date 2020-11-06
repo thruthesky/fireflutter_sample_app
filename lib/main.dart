@@ -6,7 +6,8 @@ import 'package:fireflutter_sample_app/screens/forum/post.edit.screen.dart';
 import 'package:fireflutter_sample_app/screens/forum/post.list.screen.dart';
 import 'package:fireflutter_sample_app/screens/home/home.screen.dart';
 import 'package:fireflutter_sample_app/screens/login/login.screen.dart';
-import 'package:fireflutter_sample_app/screens/phone-verification/phone-verification.screen.dart';
+import 'package:fireflutter_sample_app/screens/phone_auth/phone_auth.screen.dart';
+import 'package:fireflutter_sample_app/screens/phone_auth/phone_auth_verification_code.screen.dart';
 import 'package:fireflutter_sample_app/screens/profile/profile.screen.dart';
 import 'package:fireflutter_sample_app/screens/register/register.screen.dart';
 import 'package:fireflutter_sample_app/translations.dart';
@@ -17,7 +18,16 @@ import './global_variables.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await ff.init();
+  await ff.init(
+    settings: {
+      'app': {
+        'verify-after-register': true,
+        'verify-after-login': true,
+        'force-verification': false,
+        'block-non-verified-users-to-create': true,
+      },
+    },
+  );
   runApp(MainApp());
 }
 
@@ -36,7 +46,7 @@ class _MainAppState extends State<MainApp> {
       //   'forum-list',
       //   arguments: {'category': 'qna'},
       // );
-      // Get.toNamed('profile');
+      Get.toNamed('phone-auth');
     });
   }
 
@@ -56,8 +66,10 @@ class _MainAppState extends State<MainApp> {
         GetPage(name: 'admin-category', page: () => AdminCategoryScreen()),
         GetPage(name: 'forum-edit', page: () => ForumEditScreen()),
         GetPage(name: 'forum-list', page: () => ForumListScreen()),
+        GetPage(name: 'phone-auth', page: () => PhoneAuthScreen()),
         GetPage(
-            name: 'phone-verification', page: () => PhoneVerificationScreen()),
+            name: 'phone-auth-code-verification',
+            page: () => PhoneAuthCodeVerificationScreen()),
       ],
     );
   }
