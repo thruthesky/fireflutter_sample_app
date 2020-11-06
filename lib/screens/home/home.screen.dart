@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
               }),
           Divider(),
           Text('User Buttons'),
-          Row(
+          Wrap(
             children: [
               RaisedButton(
                 onPressed: () => Get.toNamed('register'),
@@ -46,6 +46,10 @@ class _HomeScreenState extends State<HomeScreen> {
               RaisedButton(
                 onPressed: ff.logout,
                 child: Text('Logout'),
+              ),
+              RaisedButton(
+                onPressed: () => Get.toNamed('phone-verification'),
+                child: Text('Phone Verificatoin'),
               ),
             ],
           ),

@@ -6,6 +6,7 @@ import 'package:fireflutter_sample_app/screens/forum/post.edit.screen.dart';
 import 'package:fireflutter_sample_app/screens/forum/post.list.screen.dart';
 import 'package:fireflutter_sample_app/screens/home/home.screen.dart';
 import 'package:fireflutter_sample_app/screens/login/login.screen.dart';
+import 'package:fireflutter_sample_app/screens/phone-verification/phone-verification.screen.dart';
 import 'package:fireflutter_sample_app/screens/profile/profile.screen.dart';
 import 'package:fireflutter_sample_app/screens/register/register.screen.dart';
 import 'package:fireflutter_sample_app/translations.dart';
@@ -35,7 +36,7 @@ class _MainAppState extends State<MainApp> {
       //   'forum-list',
       //   arguments: {'category': 'qna'},
       // );
-      Get.toNamed('profile');
+      // Get.toNamed('profile');
     });
   }
 
@@ -55,6 +56,8 @@ class _MainAppState extends State<MainApp> {
         GetPage(name: 'admin-category', page: () => AdminCategoryScreen()),
         GetPage(name: 'forum-edit', page: () => ForumEditScreen()),
         GetPage(name: 'forum-list', page: () => ForumListScreen()),
+        GetPage(
+            name: 'phone-verification', page: () => PhoneVerificationScreen()),
       ],
     );
   }

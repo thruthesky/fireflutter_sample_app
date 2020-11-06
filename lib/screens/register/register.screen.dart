@@ -56,13 +56,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   }
                 });
                 setState(() => loading = false);
-                await Get.defaultDialog(
-                  middleText: 'Welcome ' + user.displayName,
-                  textConfirm: 'Ok',
-                  confirmTextColor: Colors.white,
-                  onConfirm: () => Get.back(),
-                );
-                Get.toNamed('home');
+                // await Get.defaultDialog(
+                //   middleText: 'Welcome ' + user.displayName,
+                //   textConfirm: 'Ok',
+                //   confirmTextColor: Colors.white,
+                //   onConfirm: () => Get.back(),
+                // );
+                if (ff.appSetting('phone-verification') == true)
+                  Get.toNamed('phone-verification');
+                else
+                  Get.toNamed('home');
               } catch (e) {
                 setState(() => loading = false);
                 Get.snackbar('Error', e.toString());

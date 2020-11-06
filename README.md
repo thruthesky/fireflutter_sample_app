@@ -28,3 +28,5 @@ This is a sample app to demonstrate how to use [FireFlutter](https://pub.dev/pac
   - post-delete.
   - vote.
   - comment-crud.
+  - phone-verification
+  - block-non-phone-verified-user
