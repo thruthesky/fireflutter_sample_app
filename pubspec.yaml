@@ -14,7 +14,7 @@ dependencies:
 
   cupertino_icons: ^1.0.0
 
-  fireflutter: ^0.0.15
+  fireflutter: ^0.0.19
 
   get: ^3.15.0
 
