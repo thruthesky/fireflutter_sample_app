@@ -24,7 +24,7 @@ void main() async {
         'verify-after-register': true,
         'verify-after-login': true,
         'force-verification': false,
-        'block-non-verified-users-to-create': true,
+        'block-non-verified-users-to-create': false,
       },
     },
   );

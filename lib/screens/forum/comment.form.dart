@@ -3,7 +3,6 @@ import 'package:fireflutter_sample_app/screens/forum/edit_photos.dart';
 import 'package:fireflutter_sample_app/screens/forum/photo_upload.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 
 class CommentForm extends StatefulWidget {
   const CommentForm({
@@ -78,6 +77,17 @@ class _CommentFormState extends State<CommentForm> {
               TextButton(onPressed: widget.onCancel, child: Text('Cancel')),
             RaisedButton(
               onPressed: () async {
+                if (ff.user.phoneNumber.isNullOrBlank &&
+                    ff.appSetting('block-non-verified-users-to-create') ==
+                        true) {
+                  Get.defaultDialog(
+                    middleText: 'Please verify your phone number first!',
+                    textConfirm: 'Ok',
+                    confirmTextColor: Colors.white,
+                    onConfirm: () => Get.back(),
+                  );
+                  return;
+                }
                 final data = {
                   'content': contentController.text,
                   'files': files

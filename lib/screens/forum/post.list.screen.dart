@@ -50,10 +50,21 @@ class _ForumListScreenState extends State<ForumListScreen> {
         title: Text(category),
         actions: [
           IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () =>
-                Get.toNamed('forum-edit', arguments: {'category': category}),
-          ),
+              icon: Icon(Icons.add),
+              onPressed: () {
+                if (ff.user.phoneNumber.isNullOrBlank &&
+                    ff.appSetting('block-non-verified-users-to-create') ==
+                        true) {
+                  Get.defaultDialog(
+                    middleText: 'Please verify your phone number first!',
+                    textConfirm: 'Ok',
+                    confirmTextColor: Colors.white,
+                    onConfirm: () => Get.back(),
+                  );
+                } else {
+                  Get.toNamed('forum-edit', arguments: {'category': category});
+                }
+              }),
         ],
       ),
       body: Container(
