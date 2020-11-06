@@ -11,6 +11,7 @@ class LoginScreen extends StatefulWidget {
 class _RegisterScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  bool loading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,6 +70,7 @@ class _RegisterScreenState extends State<LoginScreen> {
           ),
           RaisedButton(
             onPressed: () async {
+              setState(() => loading = true);
               try {
                 await ff.login(
                   email: emailController.text,
@@ -82,9 +84,11 @@ class _RegisterScreenState extends State<LoginScreen> {
                 }
               } catch (e) {
                 Get.snackbar('Error', e.toString());
+              } finally {
+                setState(() => loading = false);
               }
             },
-            child: Text('Login'),
+            child: loading ? CircularProgressIndicator() : Text('Login'),
           ),
         ],
       ),

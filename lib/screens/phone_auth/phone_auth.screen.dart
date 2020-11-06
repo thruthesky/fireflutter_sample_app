@@ -80,10 +80,11 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
               },
               child: loading ? CircularProgressIndicator() : Text('SEND CODE'),
             ),
-            RaisedButton(
-              onPressed: () => Get.toNamed('home'),
-              child: Text('SKIP'),
-            )
+            if (ff.appSetting('force-verification') != true)
+              RaisedButton(
+                onPressed: () => Get.toNamed('home'),
+                child: Text('SKIP'),
+              )
           ],
         ),
       ),

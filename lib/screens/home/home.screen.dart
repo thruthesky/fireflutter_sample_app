@@ -49,15 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text('Profile'),
               ),
               RaisedButton(
-                onPressed: () async {
-                  try {
-                    await ff.logout();
-                    print('logged out');
-                  } catch (e) {
-                    print(e);
-                    Get.snackbar('Error', e.toString());
-                  }
-                },
+                onPressed: ff.logout,
                 child: Text('Logout'),
               ),
               RaisedButton(

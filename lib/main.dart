@@ -77,6 +77,14 @@ class _MainAppState extends State<MainApp> {
             name: 'phone-auth-code-verification',
             page: () => PhoneAuthCodeVerificationScreen()),
       ],
+      routingCallback: (routing) {
+        if (ff.user.phoneNumber.isNullOrBlank &&
+            ff.appSetting('force-verification') ==
+                true) if (routing.current != 'home') {
+          WidgetsBinding.instance
+              .addPostFrameCallback((_) => Get.offNamed('phone-auth'));
+        }
+      },
     );
   }
 }
