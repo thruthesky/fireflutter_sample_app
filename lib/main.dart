@@ -47,6 +47,12 @@ class _MainAppState extends State<MainApp> {
       //   arguments: {'category': 'qna'},
       // );
       // Get.toNamed('phone-auth');
+
+      // () async {
+      //   await ff.login(email: 'user@gmail.com', password: '12345a');
+      //   print(ff.user.uid);
+      //   print(ff.user.email);
+      // }();
     });
   }
 

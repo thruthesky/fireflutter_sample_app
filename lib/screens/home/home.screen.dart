@@ -11,7 +11,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    ff.login(email: 'user@gmail.com', password: '12345a');
   }
 
   @override
