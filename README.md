@@ -30,3 +30,4 @@ This is a sample app to demonstrate how to use [FireFlutter](https://pub.dev/pac
   - comment-crud.
   - phone-verification
   - settings
+  - language-settings
