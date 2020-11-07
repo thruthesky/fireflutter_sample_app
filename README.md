@@ -32,3 +32,4 @@ This is a sample app to demonstrate how to use [FireFlutter](https://pub.dev/pac
   - algolia
   - settings
   - language-settings
+  - test

@@ -17,16 +17,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: ValueKey('registerScreen'),
       appBar: AppBar(
         title: Text('Register'),
       ),
       body: Column(
         children: [
           TextFormField(
+            key: ValueKey('emailInput'),
             controller: emailController,
             decoration: InputDecoration(hintText: 'Email Address'),
           ),
           TextFormField(
+            key: ValueKey('passwordInput'),
             controller: passwordController,
             decoration: InputDecoration(hintText: 'Password'),
           ),

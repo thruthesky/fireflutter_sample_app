@@ -16,6 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: ValueKey('homeScreen'),
       appBar: AppBar(
         title: Text('app-name'.tr),
       ),
@@ -26,8 +27,9 @@ class _HomeScreenState extends State<HomeScreen> {
               stream: ff.userChange,
               builder: (context, snapshot) {
                 if (ff.userIsLoggedIn) {
-                  return Text(
-                      'UID: ${ff.user.uid}, Email: ${ff.user.email}, displayName: ${ff.user.displayName}, Phone: ${ff.user.phoneNumber}');
+                  return Container();
+                  // Text(
+                  // 'UID: ${ff.user.uid}, Email: ${ff.user.email}, displayName: ${ff.user.displayName}, Phone: ${ff.user.phoneNumber}');
                 } else {
                   return Text('You are not logged in.');
                 }
@@ -37,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Wrap(
             children: [
               RaisedButton(
+                key: ValueKey('registerButton'),
                 onPressed: () => Get.toNamed('register'),
                 child: Text('Register'),
               ),
