@@ -56,6 +56,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () => Get.toNamed('phone-auth'),
                 child: Text('Phone Verificatoin'),
               ),
+              RaisedButton(
+                onPressed: () => Get.toNamed('settings'),
+                child: Text('Settings'),
+              ),
             ],
           ),
           if (ff.isAdmin) ...[
@@ -66,41 +70,29 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
           Divider(),
-          Row(
+          Wrap(
             children: [
-              Expanded(
-                child: RaisedButton(
-                  onPressed: () =>
-                      Get.toNamed('forum-edit', arguments: {'category': 'qna'}),
-                  child: Text('Create a Post'),
-                ),
+              RaisedButton(
+                onPressed: () =>
+                    Get.toNamed('forum-edit', arguments: {'category': 'qna'}),
+                child: Text('Create a Post'),
               ),
-              Expanded(
-                child: RaisedButton(
-                  onPressed: () =>
-                      Get.toNamed('forum-list', arguments: {'category': 'qna'}),
-                  child: Text('QnA Forum'),
-                ),
+              RaisedButton(
+                onPressed: () =>
+                    Get.toNamed('forum-list', arguments: {'category': 'qna'}),
+                child: Text('QnA Forum'),
               ),
-              Expanded(
-                child: RaisedButton(
-                  onPressed: () => Get.toNamed('forum-list',
-                      arguments: {'category': 'discussion'}),
-                  child: Text('Discussion Forum'),
-                ),
+              RaisedButton(
+                onPressed: () => Get.toNamed('forum-list',
+                    arguments: {'category': 'discussion'}),
+                child: Text('Discussion Forum'),
               ),
             ],
           ),
           Divider(),
-          Row(
-            children: [
-              Expanded(
-                child: RaisedButton(
-                  onPressed: () => Get.toNamed('push-notification'),
-                  child: Text('Push Notification'),
-                ),
-              ),
-            ],
+          RaisedButton(
+            onPressed: () => Get.toNamed('push-notification'),
+            child: Text('Push Notification'),
           ),
         ],
       ),

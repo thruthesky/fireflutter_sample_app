@@ -10,6 +10,7 @@ import 'package:fireflutter_sample_app/screens/phone_auth/phone_auth_verificatio
 import 'package:fireflutter_sample_app/screens/profile/profile.screen.dart';
 import 'package:fireflutter_sample_app/screens/push-notification/push-notification.screen.dart';
 import 'package:fireflutter_sample_app/screens/register/register.screen.dart';
+import 'package:fireflutter_sample_app/screens/settings/settings.screen.dart';
 import 'package:fireflutter_sample_app/translations.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -118,6 +119,7 @@ class _MainAppState extends State<MainApp> {
             name: 'phone-auth-code-verification',
             page: () => PhoneAuthCodeVerificationScreen()),
         GetPage(name: 'push-notification', page: () => PushNotification()),
+        GetPage(name: 'settings', page: () => SettingsScreen()),
       ],
       routingCallback: (routing) {
         if (ff.user.phoneNumber.isNullOrBlank &&
