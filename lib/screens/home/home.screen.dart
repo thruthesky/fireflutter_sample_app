@@ -97,6 +97,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     arguments: {'category': 'discussion'}),
                 child: Text('Discussion Forum'),
               ),
+              RaisedButton(
+                onPressed: () => Get.toNamed('search'),
+                child: Text('Search'),
+              ),
             ],
           ),
           Divider(),

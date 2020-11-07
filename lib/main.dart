@@ -12,6 +12,7 @@ import 'package:fireflutter_sample_app/screens/phone_auth/phone_auth_verificatio
 import 'package:fireflutter_sample_app/screens/profile/profile.screen.dart';
 import 'package:fireflutter_sample_app/screens/push-notification/push-notification.screen.dart';
 import 'package:fireflutter_sample_app/screens/register/register.screen.dart';
+import 'package:fireflutter_sample_app/screens/search/search.screen.dart';
 import 'package:fireflutter_sample_app/screens/settings/settings.screen.dart';
 import 'package:fireflutter_sample_app/translations.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,10 @@ void main() async {
         'verify-after-login': true,
         'force-verification': false,
         'block-non-verified-users-to-create': false,
-      }
+        'ALGOLIA_APP_ID': "W42X6RIXO5",
+        'ALGOLIA_SEARCH_KEY': "710ce6c481caf890163ba0c24573130f",
+        'ALGOLIA_INDEX_NAME': "Dev"
+      },
     },
     translations: translations,
     enableNotification: true,
@@ -130,6 +134,7 @@ class _MainAppState extends State<MainApp> {
             page: () => PhoneAuthCodeVerificationScreen()),
         GetPage(name: 'push-notification', page: () => PushNotification()),
         GetPage(name: 'settings', page: () => SettingsScreen()),
+        GetPage(name: 'search', page: () => SearchScreen()),
       ],
       routingCallback: (routing) {
         if (ff.user.phoneNumber.isNullOrBlank &&
