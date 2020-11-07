@@ -1,4 +1,9 @@
+import 'dart:async';
+
+import 'package:fireflutter/fireflutter.dart';
+import 'package:fireflutter_sample_app/global_variables.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SettingsScreen extends StatefulWidget {
   @override
@@ -6,8 +11,73 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  bool loadingFirebase = true;
+  StreamSubscription firebaseSubscription;
+  Map<String, dynamic> public;
+  @override
+  void initState() {
+    super.initState();
+
+    firebaseSubscription = ff.firebaseInitialized.listen((re) async {
+      public = await ff.userPublicData();
+      setState(() => loadingFirebase = false);
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    firebaseSubscription.cancel();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Settings'),
+      ),
+      body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Text('Notify me new comments under my post'),
+        loadingFirebase
+            ? CircularProgressIndicator()
+            : Switch(
+                value: public[notifyPost] ?? false,
+                onChanged: (value) async {
+                  try {
+                    /// @attention update screen first, then save it firestore later.
+                    setState(() => public[notifyPost] = value);
+                    ff.updateUserMeta({
+                      'public': {
+                        notifyPost: value,
+                      },
+                    });
+                    Get.snackbar('Update', 'Settings updated!');
+                  } catch (e) {
+                    Get.snackbar('Error', e.toString());
+                  }
+                },
+              ),
+        Text('Notify me new comments under my comments'),
+        loadingFirebase
+            ? CircularProgressIndicator()
+            : Switch(
+                value: public[notifyComment] ?? false,
+                onChanged: (value) async {
+                  try {
+                    /// @attention update screen first, then save it firestore later.
+                    setState(() => public[notifyComment] = value);
+                    ff.updateUserMeta({
+                      'public': {
+                        notifyComment: value,
+                      },
+                    });
+                    Get.snackbar('Update', 'Settings updated!');
+                  } catch (e) {
+                    Get.snackbar('Error', e.toString());
+                  }
+                },
+              ),
+      ]),
+    );
   }
 }

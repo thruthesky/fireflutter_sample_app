@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:fireflutter/fireflutter.dart';
 import 'package:fireflutter_sample_app/screens/admin/admin.screen.dart';
 import 'package:fireflutter_sample_app/screens/admin/admin.category.screen.dart';
@@ -45,28 +47,34 @@ class _MainAppState extends State<MainApp> {
   void initState() {
     super.initState();
     ff.translationsChange.listen((x) => setState(() => updateTranslations(x)));
-    // Timer(Duration(milliseconds: 200), () {
-    //   // Get.toNamed(
-    //   //   'forum-list',
-    //   //   arguments: {'category': 'qna'},
-    //   // );
-    //   // Get.toNamed('phone-auth');
+    Timer(Duration(milliseconds: 200), () {
+      // Get.toNamed(
+      //   'forum-list',
+      //   arguments: {'category': 'qna'},
+      // );
+      // Get.toNamed('phone-auth');
 
-    //   // () async {
-    //   //   await ff.login(email: 'user@gmail.com', password: '12345a');
-    //   //   print(ff.user.uid);
-    //   //   print(ff.user.email);
-    //   // }();
-    // });
+      // () async {
+      //   await ff.login(email: 'user@gmail.com', password: '12345a');
+      //   print(ff.user.uid);
+      //   print(ff.user.email);
+      // }();
+      // Get.toNamed('settings');
+    });
 
     ff.notification.listen(
       (x) {
         Map<dynamic, dynamic> notification = x['notification'];
         Map<dynamic, dynamic> data = x['data'];
         NotificationType type = x['type'];
-        print('NotificationType: $type');
-        print('notification: $notification');
-        print('data: $data');
+        // print('NotificationType: $type');
+        // print('notification: $notification');
+        // print('data: $data');
+
+        /// Ignore message from myself.
+        if (data['senderUid'] == ff.user.uid) {
+          return;
+        }
         if (type == NotificationType.onMessage) {
           Get.snackbar(
             notification['title'].toString(),
