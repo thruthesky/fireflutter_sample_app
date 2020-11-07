@@ -36,48 +36,62 @@ class _SettingsScreenState extends State<SettingsScreen> {
       appBar: AppBar(
         title: Text('Settings'),
       ),
-      body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text('Notify me new comments under my post'),
-        loadingFirebase
-            ? CircularProgressIndicator()
-            : Switch(
-                value: public[notifyPost] ?? false,
-                onChanged: (value) async {
-                  try {
-                    /// @attention update screen first, then save it firestore later.
-                    setState(() => public[notifyPost] = value);
-                    ff.updateUserMeta({
-                      'public': {
-                        notifyPost: value,
-                      },
-                    });
-                    Get.snackbar('Update', 'Settings updated!');
-                  } catch (e) {
-                    Get.snackbar('Error', e.toString());
-                  }
-                },
-              ),
-        Text('Notify me new comments under my comments'),
-        loadingFirebase
-            ? CircularProgressIndicator()
-            : Switch(
-                value: public[notifyComment] ?? false,
-                onChanged: (value) async {
-                  try {
-                    /// @attention update screen first, then save it firestore later.
-                    setState(() => public[notifyComment] = value);
-                    ff.updateUserMeta({
-                      'public': {
-                        notifyComment: value,
-                      },
-                    });
-                    Get.snackbar('Update', 'Settings updated!');
-                  } catch (e) {
-                    Get.snackbar('Error', e.toString());
-                  }
-                },
-              ),
-      ]),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Choose your languages:'),
+          DropdownButton<String>(
+            value: ff.userLanguage,
+            items: [
+              DropdownMenuItem(value: 'ko', child: Text('Korean')),
+              DropdownMenuItem(value: 'en', child: Text('English')),
+            ],
+            onChanged: (String value) {
+              ff.updateProfile({'language': value});
+            },
+          ),
+          Text('Notify me new comments under my post'),
+          loadingFirebase
+              ? CircularProgressIndicator()
+              : Switch(
+                  value: public[notifyPost] ?? false,
+                  onChanged: (value) async {
+                    try {
+                      /// @attention update screen first, then save it firestore later.
+                      setState(() => public[notifyPost] = value);
+                      ff.updateUserMeta({
+                        'public': {
+                          notifyPost: value,
+                        },
+                      });
+                      Get.snackbar('Update', 'Settings updated!');
+                    } catch (e) {
+                      Get.snackbar('Error', e.toString());
+                    }
+                  },
+                ),
+          Text('Notify me new comments under my comments'),
+          loadingFirebase
+              ? CircularProgressIndicator()
+              : Switch(
+                  value: public[notifyComment] ?? false,
+                  onChanged: (value) async {
+                    try {
+                      /// @attention update screen first, then save it firestore later.
+                      setState(() => public[notifyComment] = value);
+                      ff.updateUserMeta({
+                        'public': {
+                          notifyComment: value,
+                        },
+                      });
+                      Get.snackbar('Update', 'Settings updated!');
+                    } catch (e) {
+                      Get.snackbar('Error', e.toString());
+                    }
+                  },
+                ),
+        ],
+      ),
     );
   }
 }
