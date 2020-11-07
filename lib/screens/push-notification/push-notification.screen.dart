@@ -39,31 +39,31 @@ class _PushNotificationState extends State<PushNotification> {
                 test: true,
               );
             },
-            child: Text('Send notification to topic'),
+            child: Text('Send notification to all uers(allTopic)'),
           ),
           RaisedButton(
             onPressed: () async {
               ff.sendNotification(
-                'Sample push notification to own token',
+                'Sample push notification to me',
                 'This is the content of push to token',
                 screen: 'home',
                 token: ff.firebaseMessagingToken,
                 test: true,
               );
             },
-            child: Text('Send notification to own token'),
+            child: Text('Send notification to me(my token)'),
           ),
           RaisedButton(
             onPressed: () async {
               ff.sendNotification(
-                'Sample push notification to own tokens',
+                'Sample push notification to my devices',
                 'This is the content of push to tokens',
                 screen: 'home',
                 tokens: [ff.firebaseMessagingToken],
                 test: true,
               );
             },
-            child: Text('Send notification to own tokens'),
+            child: Text('Send notification to my devices(multi tokens)'),
           ),
         ],
       ),
