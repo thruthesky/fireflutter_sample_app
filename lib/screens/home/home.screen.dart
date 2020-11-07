@@ -68,20 +68,37 @@ class _HomeScreenState extends State<HomeScreen> {
           Divider(),
           Row(
             children: [
-              RaisedButton(
-                onPressed: () =>
-                    Get.toNamed('forum-edit', arguments: {'category': 'qna'}),
-                child: Text('Create a Post'),
+              Expanded(
+                child: RaisedButton(
+                  onPressed: () =>
+                      Get.toNamed('forum-edit', arguments: {'category': 'qna'}),
+                  child: Text('Create a Post'),
+                ),
               ),
-              RaisedButton(
-                onPressed: () =>
-                    Get.toNamed('forum-list', arguments: {'category': 'qna'}),
-                child: Text('QnA Forum'),
+              Expanded(
+                child: RaisedButton(
+                  onPressed: () =>
+                      Get.toNamed('forum-list', arguments: {'category': 'qna'}),
+                  child: Text('QnA Forum'),
+                ),
               ),
-              RaisedButton(
-                onPressed: () => Get.toNamed('forum-list',
-                    arguments: {'category': 'discussion'}),
-                child: Text('Discussion Forum'),
+              Expanded(
+                child: RaisedButton(
+                  onPressed: () => Get.toNamed('forum-list',
+                      arguments: {'category': 'discussion'}),
+                  child: Text('Discussion Forum'),
+                ),
+              ),
+            ],
+          ),
+          Divider(),
+          Row(
+            children: [
+              Expanded(
+                child: RaisedButton(
+                  onPressed: () => Get.toNamed('push-notification'),
+                  child: Text('Push Notification'),
+                ),
               ),
             ],
           ),
