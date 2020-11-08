@@ -4,7 +4,9 @@ import 'package:fireflutter_sample_app/screens/forum/comment.dart';
 import 'package:fireflutter_sample_app/screens/forum/comment.form.dart';
 import 'package:fireflutter_sample_app/screens/forum/display_photos.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ForumListScreen extends StatefulWidget {
   @override
@@ -69,6 +71,65 @@ class _ForumListScreenState extends State<ForumListScreen> {
                   Get.toNamed('forum-edit', arguments: {'category': category});
                 }
               }),
+          if (ff.loggedIn)
+            StreamBuilder(
+                stream: ff.myPublicDoc.snapshots(),
+                builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+                  if (snapshot.hasError) return Container();
+                  if (snapshot.connectionState == ConnectionState.waiting)
+                    return Container();
+                  print('data: ${snapshot.data.data()}');
+                  Map<String, dynamic> data = snapshot.data.data();
+                  bool postEnabled =
+                      data[NotificationOptions.post(category)] ?? false;
+                  bool commentEnabled =
+                      data[NotificationOptions.comment(category)] ?? false;
+                  return Row(children: [
+                    IconButton(
+                      icon: FaIcon(
+                        postEnabled
+                            ? FontAwesomeIcons.solidBell
+                            : FontAwesomeIcons.solidBellSlash,
+                        size: 18,
+                      ),
+                      onPressed: () async {
+                        final String topic = NotificationOptions.post(category);
+                        try {
+                          if (postEnabled) {
+                            await ff.unsubscribeTopic(topic);
+                          } else {
+                            await ff.subscribeTopic(topic);
+                          }
+                          await ff.updateUserPublic(topic, !postEnabled);
+                        } catch (e) {
+                          Get.snackbar('Error', e.toString());
+                        }
+                      },
+                    ),
+                    IconButton(
+                      icon: FaIcon(
+                        commentEnabled
+                            ? FontAwesomeIcons.solidComment
+                            : FontAwesomeIcons.commentSlash,
+                        size: 18,
+                      ),
+                      onPressed: () async {
+                        final String topic =
+                            NotificationOptions.comment(category);
+                        try {
+                          if (commentEnabled) {
+                            await ff.unsubscribeTopic(topic);
+                          } else {
+                            await ff.subscribeTopic(topic);
+                          }
+                          await ff.updateUserPublic(topic, !commentEnabled);
+                        } catch (e) {
+                          Get.snackbar('Error', e.toString());
+                        }
+                      },
+                    ),
+                  ]);
+                }),
         ],
       ),
       body: Container(
