@@ -1,3 +1,4 @@
+import 'package:fireflutter_sample_app/keys.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
@@ -61,14 +62,17 @@ class _RegisterScreenState extends State<LoginScreen> {
           Text('Eamil & Password Login'),
           Divider(),
           TextFormField(
+            key: ValueKey(Keys.lfEmail),
             controller: emailController,
             decoration: InputDecoration(hintText: 'Email address'),
           ),
           TextFormField(
+            key: ValueKey(Keys.lfPassword),
             controller: passwordController,
             decoration: InputDecoration(hintText: 'Password'),
           ),
           RaisedButton(
+            key: ValueKey(Keys.lfSubmitButton),
             onPressed: () async {
               setState(() => loading = true);
               try {

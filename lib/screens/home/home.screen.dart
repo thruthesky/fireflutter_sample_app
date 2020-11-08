@@ -1,4 +1,5 @@
 import 'package:fireflutter_sample_app/global_variables.dart';
+import 'package:fireflutter_sample_app/keys.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,6 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: ValueKey(Keys.homeScreen),
       appBar: AppBar(
         title: Text('app-name'.tr),
       ),
@@ -27,9 +29,14 @@ class _HomeScreenState extends State<HomeScreen> {
               builder: (context, snapshot) {
                 if (ff.userIsLoggedIn) {
                   return Text(
-                      'UID: ${ff.user.uid}, Email: ${ff.user.email}, displayName: ${ff.user.displayName}, Phone: ${ff.user.phoneNumber}');
+                    'Email: ${ff.user.email}, Color: ${ff.userData['favoriteColor']}, UID: ${ff.user.uid}, displayName: ${ff.user.displayName}, Phone: ${ff.user.phoneNumber},',
+                    key: ValueKey(Keys.hInfo),
+                  );
                 } else {
-                  return Text('You are not logged in.');
+                  return Text(
+                    'Please login',
+                    key: ValueKey(Keys.hPleaseLogin),
+                  );
                 }
               }),
           Divider(),
@@ -37,18 +44,22 @@ class _HomeScreenState extends State<HomeScreen> {
           Wrap(
             children: [
               RaisedButton(
+                key: ValueKey(Keys.rButton),
                 onPressed: () => Get.toNamed('register'),
                 child: Text('Register'),
               ),
               RaisedButton(
+                key: ValueKey(Keys.hLoginButton),
                 onPressed: () => Get.toNamed('login'),
                 child: Text('Login'),
               ),
               RaisedButton(
+                key: ValueKey(Keys.hProfileButotn),
                 onPressed: () => Get.toNamed('profile'),
                 child: Text('Profile'),
               ),
               RaisedButton(
+                key: ValueKey(Keys.hLogoutButton),
                 onPressed: ff.logout,
                 child: Text('Logout'),
               ),

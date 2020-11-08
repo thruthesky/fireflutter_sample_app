@@ -16,12 +16,15 @@ dependencies:
 
   get: ^3.15.0
   country_code_picker: ^1.6.2
+  faker: ^1.2.1
   fireflutter:
     path: packages/fireflutter
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  flutter_driver:
+    sdk: flutter
+  test: ^1.14.4
 flutter:
   uses-material-design: true
