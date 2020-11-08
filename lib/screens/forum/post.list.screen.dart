@@ -52,6 +52,10 @@ class _ForumListScreenState extends State<ForumListScreen> {
           IconButton(
               icon: Icon(Icons.add),
               onPressed: () {
+                if (ff.notLoggedIn) {
+                  Get.snackbar('로그인', '로그인을 먼저 해 주세요.');
+                  return;
+                }
                 if (ff.user.phoneNumber.isNullOrBlank &&
                     ff.appSetting('block-non-verified-users-to-create') ==
                         true) {

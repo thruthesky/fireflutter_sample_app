@@ -33,7 +33,19 @@
             "request": "launch",
             "type": "dart",
             "deviceId": "B33AA4A3-1FBA-4FC1-AC49-26465C64EB78"
-        }
+        },
+        {
+            "name": "App Instrument",
+            "program": "test_driver/app.dart",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--observatory-port",
+                "12345",
+                "--disable-service-auth-codes"
+            ],
+            "deviceId": "emulator-5554"
+         }         
     ],
     "compounds": [
         {

@@ -1,4 +1,5 @@
 import 'package:fireflutter_sample_app/global_variables.dart';
+import 'package:fireflutter_sample_app/keys.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: ValueKey('homeScreen'),
+      key: ValueKey(Keys.homeScreen),
       appBar: AppBar(
         title: Text('app-name'.tr),
       ),
@@ -27,9 +28,10 @@ class _HomeScreenState extends State<HomeScreen> {
               stream: ff.userChange,
               builder: (context, snapshot) {
                 if (ff.userIsLoggedIn) {
-                  return Container();
-                  // Text(
-                  // 'UID: ${ff.user.uid}, Email: ${ff.user.email}, displayName: ${ff.user.displayName}, Phone: ${ff.user.phoneNumber}');
+                  return Text(
+                    'Email: ${ff.user.email}, Color: ${ff.userData['favoriteColor']}, UID: ${ff.user.uid}, displayName: ${ff.user.displayName}, Phone: ${ff.user.phoneNumber},',
+                    key: ValueKey('hinfo'),
+                  );
                 } else {
                   return Text('You are not logged in.');
                 }
@@ -39,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Wrap(
             children: [
               RaisedButton(
-                key: ValueKey('registerButton'),
+                key: ValueKey(Keys.rButton),
                 onPressed: () => Get.toNamed('register'),
                 child: Text('Register'),
               ),

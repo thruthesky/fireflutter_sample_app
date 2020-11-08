@@ -1,4 +1,5 @@
 import 'package:fireflutter_sample_app/global_variables.dart';
+import 'package:fireflutter_sample_app/keys.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -24,25 +25,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
       body: Column(
         children: [
           TextFormField(
-            key: ValueKey('emailInput'),
+            key: ValueKey(Keys.riEmail),
             controller: emailController,
             decoration: InputDecoration(hintText: 'Email Address'),
           ),
           TextFormField(
-            key: ValueKey('passwordInput'),
+            key: ValueKey(Keys.riPassword),
             controller: passwordController,
             decoration: InputDecoration(hintText: 'Password'),
           ),
           TextFormField(
+            key: ValueKey(Keys.riDisplayName),
             controller: displayNameController,
             decoration: InputDecoration(hintText: 'displayName'),
           ),
           TextFormField(
+            key: ValueKey(Keys.riColor),
             controller: favoriteColorController,
             decoration:
                 InputDecoration(hintText: 'What is your favorite color?'),
           ),
           RaisedButton(
+            key: ValueKey(Keys.rsButton),
             onPressed: () async {
               setState(() => loading = true);
               try {

@@ -16,6 +16,7 @@ dependencies:
 
   get: ^3.15.0
   country_code_picker: ^1.6.2
+  faker: ^1.2.1
   fireflutter:
     path: packages/fireflutter
 

@@ -25,8 +25,8 @@ void main() async {
     settings: {
       'app': {
         'default-language': 'ko',
-        'verify-after-register': true,
-        'verify-after-login': true,
+        'verify-after-register': false,
+        'verify-after-login': false,
         'force-verification': false,
         'block-non-verified-users-to-create': false,
         'ALGOLIA_APP_ID': "W42X6RIXO5",
@@ -139,10 +139,11 @@ class _MainAppState extends State<MainApp> {
       routingCallback: (routing) {
         if (ff.loggedIn) {
           if (ff.user.phoneNumber.isNullOrBlank &&
-              ff.appSetting('force-verification') ==
-                  true) if (routing.current != 'home') {
-            WidgetsBinding.instance
-                .addPostFrameCallback((_) => Get.offNamed('phone-auth'));
+              ff.appSetting('force-verification') == true) {
+            if (routing.current != 'home') {
+              WidgetsBinding.instance
+                  .addPostFrameCallback((_) => Get.offNamed('phone-auth'));
+            }
           }
         }
       },
