@@ -30,10 +30,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (ff.userIsLoggedIn) {
                   return Text(
                     'Email: ${ff.user.email}, Color: ${ff.userData['favoriteColor']}, UID: ${ff.user.uid}, displayName: ${ff.user.displayName}, Phone: ${ff.user.phoneNumber},',
-                    key: ValueKey('hinfo'),
+                    key: ValueKey(Keys.hInfo),
                   );
                 } else {
-                  return Text('You are not logged in.');
+                  return Text(
+                    'Please login',
+                    key: ValueKey(Keys.hPleaseLogin),
+                  );
                 }
               }),
           Divider(),
@@ -46,14 +49,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text('Register'),
               ),
               RaisedButton(
+                key: ValueKey(Keys.hLoginButton),
                 onPressed: () => Get.toNamed('login'),
                 child: Text('Login'),
               ),
               RaisedButton(
+                key: ValueKey(Keys.hProfileButotn),
                 onPressed: () => Get.toNamed('profile'),
                 child: Text('Profile'),
               ),
               RaisedButton(
+                key: ValueKey(Keys.hLogoutButton),
                 onPressed: ff.logout,
                 child: Text('Logout'),
               ),
