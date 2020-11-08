@@ -135,32 +135,34 @@ class PostButtons extends StatelessWidget {
           },
           child: Text('Delete'),
         ),
-        RaisedButton(
-          onPressed: () async {
-            try {
-              await ff.vote(
-                postId: post['id'],
-                choice: VoteChoice.like,
-              );
-            } catch (e) {
-              Get.snackbar('Error', e.toString());
-            }
-          },
-          child: Text('Like ${post['likes'] ?? ''}'),
-        ),
-        TextButton(
-          onPressed: () async {
-            try {
-              await ff.vote(
-                postId: post['id'],
-                choice: VoteChoice.dislike,
-              );
-            } catch (e) {
-              Get.snackbar('Error', e.toString());
-            }
-          },
-          child: Text('Dislike ${post['dislikes'] ?? ''}'),
-        ),
+        if (ff.voteSetting(post['category'], VoteChoice.like))
+          RaisedButton(
+            onPressed: () async {
+              try {
+                await ff.vote(
+                  postId: post['id'],
+                  choice: VoteChoice.like,
+                );
+              } catch (e) {
+                Get.snackbar('Error', e.toString());
+              }
+            },
+            child: Text('Like ${post['likes'] ?? ''}'),
+          ),
+        if (ff.voteSetting(post['category'], VoteChoice.dislike))
+          TextButton(
+            onPressed: () async {
+              try {
+                await ff.vote(
+                  postId: post['id'],
+                  choice: VoteChoice.dislike,
+                );
+              } catch (e) {
+                Get.snackbar('Error', e.toString());
+              }
+            },
+            child: Text('Dislike ${post['dislikes'] ?? ''}'),
+          ),
       ],
     );
   }

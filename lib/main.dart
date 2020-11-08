@@ -57,6 +57,9 @@ class _MainAppState extends State<MainApp> {
         Get.updateLocale(Locale(ff.userLanguage));
       });
     });
+    ff.settingsChange.listen((settings) {
+      setState(() {});
+    });
     Timer(Duration(milliseconds: 200), () {
       // Get.toNamed(
       //   'forum-list',

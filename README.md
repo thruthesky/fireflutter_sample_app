@@ -33,3 +33,4 @@ This is a sample app to demonstrate how to use [FireFlutter](https://pub.dev/pac
   - settings
   - language-settings
   - test
+  - vote-settings. To show or hide like/dislike buttons.
