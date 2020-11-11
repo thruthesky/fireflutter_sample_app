@@ -49,11 +49,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   'password': passwordController.text,
                   'displayName': displayNameController.text,
                   'favoriteColor': favoriteColorController.text
-                }, meta: {
-                  "public": {
-                    "notifyPost": true,
-                    "notifyComment": true,
-                  }
+                }, public: {
+                  "notifyPost": true,
+                  "notifyComment": true,
                 });
                 setState(() => loading = false);
                 await Get.defaultDialog(

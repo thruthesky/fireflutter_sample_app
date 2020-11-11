@@ -17,4 +17,11 @@ This is a sample app to demonstrate how to use [FireFlutter](https://pub.dev/pac
   - category-admin. adding category management page
   - post-edit. post create without post update
   - photo-upload. file upload code without file delete
-  - post-list. post list page
+  - forum-list
+    - Listing posts of a forum cateogry.
+    - Post create button
+    - Inifinite scrolling
+    - Displaying 'no posts' message if there is no post created under a forum.
+    - Displaying 'no more posts' message if there is no more posts to fetch.
+  - forum-list-with-photo
+  - post-edit
