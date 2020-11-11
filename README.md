@@ -4,9 +4,9 @@ This is a sample app to demonstrate how to use [FireFlutter](https://pub.dev/pac
 
 ## Branches
 
-- You may refer the branches in the following order to see the gradual update of the sample app.
-  - fireflutter. Add fireflutter to Flutter project.
-  - getx. Add GetX package to Flutter project.
+- You may refer the branches in the following order to see gradual update of the sample app.
+  - install-fireflutter. Add fireflutter to Flutter project.
+  - install-getx. Add GetX package to Flutter project.
   - routes. Page routes
   - register. User registration.
   - register-v2. add more code on register page
