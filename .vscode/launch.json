@@ -4,6 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": "Current Device",
             "program": "lib/main.dart",
@@ -35,7 +36,7 @@
             "deviceId": "B33AA4A3-1FBA-4FC1-AC49-26465C64EB78"
         },
         {
-            "name": "App Instrument",
+            "name": "App Instrument Emulator",
             "program": "test_driver/app.dart",
             "request": "launch",
             "type": "dart",
@@ -45,6 +46,18 @@
                 "--disable-service-auth-codes"
             ],
             "deviceId": "emulator-5554"
+         },
+        {
+            "name": "App Instrument Simulator",
+            "program": "test_driver/app.dart",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--observatory-port",
+                "12345",
+                "--disable-service-auth-codes"
+            ],
+            "deviceId": "004CE606-8161-441D-8AB7-7FA5DEC5DAF0"
          }         
     ],
     "compounds": [

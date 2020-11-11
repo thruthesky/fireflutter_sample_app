@@ -1,3 +1,4 @@
+import 'package:fireflutter/fireflutter.dart';
 import 'package:fireflutter_sample_app/global_variables.dart';
 import 'package:fireflutter_sample_app/keys.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<ProfileScreen> {
   TextEditingController displayNameController =
-      TextEditingController(text: ff.user.displayName);
+      TextEditingController(text: ff.user?.displayName ?? '');
   TextEditingController favoriteColorController =
       TextEditingController(text: ff.userData['favoriteColor']);
 
@@ -112,11 +113,9 @@ class _RegisterScreenState extends State<ProfileScreen> {
                       await ff.updateProfile({
                         'displayName': displayNameController.text,
                         'favoriteColor': favoriteColorController.text
-                      }, meta: {
-                        "public": {
-                          "notifyPost": true,
-                          "notifyComment": true,
-                        }
+                      }, public: {
+                        notifyPost: true,
+                        notifyComment: true,
                       });
                       setState(() => loading = false);
 

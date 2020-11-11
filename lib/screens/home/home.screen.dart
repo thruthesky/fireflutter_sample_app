@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
           StreamBuilder(
               stream: ff.userChange,
               builder: (context, snapshot) {
-                if (ff.userIsLoggedIn) {
+                if (ff.loggedIn) {
                   return Text(
                     'Email: ${ff.user.email}, Color: ${ff.userData['favoriteColor']}, UID: ${ff.user.uid}, displayName: ${ff.user.displayName}, Phone: ${ff.user.phoneNumber},',
                     key: ValueKey(Keys.hInfo),
