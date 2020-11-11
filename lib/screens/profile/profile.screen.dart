@@ -1,4 +1,6 @@
+import 'package:fireflutter/fireflutter.dart';
 import 'package:fireflutter_sample_app/global_variables.dart';
+import 'package:fireflutter_sample_app/keys.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -93,15 +95,18 @@ class _RegisterScreenState extends State<ProfileScreen> {
                 if (uploadProgress != 0) Text('$uploadProgress%'),
                 Text('My Email: ${ff.user.email}'),
                 TextFormField(
+                  key: ValueKey(Keys.pfDisplayName),
                   controller: displayNameController,
                   decoration: InputDecoration(hintText: 'displayName'),
                 ),
                 TextFormField(
+                  key: ValueKey(Keys.pfColor),
                   controller: favoriteColorController,
                   decoration:
                       InputDecoration(hintText: 'What is your favorite color?'),
                 ),
                 RaisedButton(
+                  key: ValueKey(Keys.pfSubmitButton),
                   onPressed: () async {
                     setState(() => loading = true);
                     try {
@@ -109,8 +114,8 @@ class _RegisterScreenState extends State<ProfileScreen> {
                         'displayName': displayNameController.text,
                         'favoriteColor': favoriteColorController.text
                       }, public: {
-                        "notifyPost": true,
-                        "notifyComment": true,
+                        notifyPost: true,
+                        notifyComment: true,
                       });
                       setState(() => loading = false);
 

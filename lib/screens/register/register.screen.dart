@@ -1,3 +1,4 @@
+import 'package:fireflutter/fireflutter.dart';
 import 'package:fireflutter_sample_app/global_variables.dart';
 import 'package:fireflutter_sample_app/keys.dart';
 import 'package:flutter/material.dart';
@@ -56,9 +57,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   'displayName': displayNameController.text,
                   'favoriteColor': favoriteColorController.text
                 }, public: {
-                  "notifyPost": true,
-                  "notifyComment": true,
+                  notifyPost: true,
+                  notifyComment: true,
                 });
+
                 setState(() => loading = false);
                 if (ff.appSetting('verify-after-register') == true) {
                   Get.toNamed('phone-auth');

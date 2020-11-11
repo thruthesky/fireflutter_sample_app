@@ -59,9 +59,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     try {
                       /// @attention update screen first, then save it firestore later.
                       setState(() => public[notifyPost] = value);
-                      ff.updateUserPublic({
-                        notifyPost: value,
-                      });
+                      ff.updateUserPublic(notifyPost, value);
                       Get.snackbar('Update', 'Settings updated!');
                     } catch (e) {
                       Get.snackbar('Error', e.toString());
@@ -77,9 +75,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     try {
                       /// @attention update screen first, then save it firestore later.
                       setState(() => public[notifyComment] = value);
-                      ff.updateUserPublic({
-                        notifyComment: value,
-                      });
+                      ff.updateUserPublic(notifyComment, value);
                       Get.snackbar('Update', 'Settings updated!');
                     } catch (e) {
                       Get.snackbar('Error', e.toString());
