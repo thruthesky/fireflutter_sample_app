@@ -1,5 +1,9 @@
 .vscode/
 packages/
+<<<<<<< HEAD
+=======
+
+>>>>>>> category-admin
 # Miscellaneous
 *.class
 *.log

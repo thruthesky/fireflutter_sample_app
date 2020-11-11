@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:fireflutter_sample_app/screens/admin/admin.screen.dart';
 import 'package:fireflutter_sample_app/screens/admin/admin.category.screen.dart';
 import 'package:fireflutter_sample_app/screens/forum/forum.edit.dart';
