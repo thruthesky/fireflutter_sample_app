@@ -73,7 +73,7 @@ class _ForumListScreenState extends State<ForumListScreen> {
               }),
           if (ff.loggedIn)
             StreamBuilder(
-                stream: ff.myPublicDoc.snapshots(),
+                stream: ff.publicDoc.snapshots(),
                 builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
                   if (snapshot.hasError) return Container();
                   if (snapshot.connectionState == ConnectionState.waiting)
