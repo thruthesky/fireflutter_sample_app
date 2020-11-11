@@ -83,6 +83,16 @@ class _ForumListScreenState extends State<ForumListScreen> {
                       /// Display uploaded images.
                       if (post['files'] != null)
                         for (String url in post['files']) Image.network(url),
+
+                      Row(children: [
+                        RaisedButton(
+                          onPressed: () => Get.toNamed(
+                            'forum-edit',
+                            arguments: {'post': post},
+                          ),
+                          child: Text('Edit'),
+                        ),
+                      ]),
                       Divider(),
                     ],
                   );
