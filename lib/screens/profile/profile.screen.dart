@@ -1,3 +1,4 @@
+import 'package:fireflutter/fireflutter.dart';
 import 'package:fireflutter_sample_app/global_variables.dart';
 import 'package:fireflutter_sample_app/keys.dart';
 import 'package:flutter/material.dart';
@@ -112,11 +113,9 @@ class _RegisterScreenState extends State<ProfileScreen> {
                       await ff.updateProfile({
                         'displayName': displayNameController.text,
                         'favoriteColor': favoriteColorController.text
-                      }, meta: {
-                        "public": {
-                          "notifyPost": true,
-                          "notifyComment": true,
-                        }
+                      }, public: {
+                        notifyPost: true,
+                        notifyComment: true,
                       });
                       setState(() => loading = false);
 
