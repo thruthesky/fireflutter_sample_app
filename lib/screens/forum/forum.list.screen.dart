@@ -68,39 +68,40 @@ class _ForumListScreenState extends State<ForumListScreen> {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      PostSubject(post: post),
-                      PostContent(post: post),
-                      PostPhotos(
-                        post: post,
+                      Text(
+                        post['title'],
+                        style: TextStyle(fontSize: 22),
                       ),
+                      Container(
+                        child: Text(post['content']),
+                        color: Colors.grey[200],
+                        margin: EdgeInsets.only(top: 16),
+                        padding: EdgeInsets.all(16),
+                        width: double.infinity,
+                      ),
+
+                      /// Display uploaded images.
+                      if (post['files'] != null)
+                        for (String url in post['files']) Image.network(url),
+
                       Row(
                         children: [
-                          PostEditButton(post: post),
+                          RaisedButton(
+                            onPressed: () => Get.toNamed(
+                              'forum-edit',
+                              arguments: {'post': post},
+                            ),
+                            child: Text('Edit'),
+                          ),
                           RaisedButton(
                             onPressed: () async {
                               try {
-                                await ff.vote(
-                                  postId: post['id'],
-                                  choice: VoteChoice.like,
-                                );
+                                await ff.deletePost(post['id']);
                               } catch (e) {
                                 Get.snackbar('Error', e.toString());
                               }
                             },
-                            child: Text('Like ${post['likes'] ?? ''}'),
-                          ),
-                          TextButton(
-                            onPressed: () async {
-                              try {
-                                await ff.vote(
-                                  postId: post['id'],
-                                  choice: VoteChoice.dislike,
-                                );
-                              } catch (e) {
-                                Get.snackbar('Error', e.toString());
-                              }
-                            },
-                            child: Text('Dislike ${post['dislikes'] ?? ''}'),
+                            child: Text('Delete'),
                           ),
                         ],
                       ),
@@ -119,84 +120,5 @@ class _ForumListScreenState extends State<ForumListScreen> {
         ),
       ),
     );
-  }
-}
-
-class PostEditButton extends StatelessWidget {
-  const PostEditButton({
-    Key key,
-    @required this.post,
-  }) : super(key: key);
-
-  final Map<String, dynamic> post;
-
-  @override
-  Widget build(BuildContext context) {
-    return RaisedButton(
-      onPressed: () => Get.toNamed(
-        'forum-edit',
-        arguments: {'post': post},
-      ),
-      child: Text('Edit'),
-    );
-  }
-}
-
-class PostContent extends StatelessWidget {
-  const PostContent({
-    Key key,
-    @required this.post,
-  }) : super(key: key);
-
-  final Map<String, dynamic> post;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text(post['content']),
-      color: Colors.grey[200],
-      margin: EdgeInsets.only(top: 16),
-      padding: EdgeInsets.all(16),
-      width: double.infinity,
-    );
-  }
-}
-
-class PostSubject extends StatelessWidget {
-  const PostSubject({
-    Key key,
-    @required this.post,
-  }) : super(key: key);
-
-  final Map<String, dynamic> post;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      post['title'],
-      style: TextStyle(fontSize: 22),
-    );
-  }
-}
-
-class PostPhotos extends StatelessWidget {
-  PostPhotos({
-    Key key,
-    @required this.post,
-  }) : super(key: key);
-
-  final Map<String, dynamic> post;
-  @override
-  Widget build(BuildContext context) {
-    /// Display uploaded images.
-    if (post['files'] == null) {
-      return Container();
-    } else {
-      return Column(
-        children: [
-          for (String url in post['files']) Image.network(url),
-        ],
-      );
-    }
   }
 }
