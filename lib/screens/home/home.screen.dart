@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
               builder: (context, snapshot) {
                 if (ff.userIsLoggedIn) {
                   return Text(
-                      'Email: ${ff.user.email}, displayName: ${ff.user.displayName}');
+                      'Uid: ${ff.user.uid}, Email: ${ff.user.email}, displayName: ${ff.user.displayName}');
                 } else {
                   return Text('You are not logged in.');
                 }
