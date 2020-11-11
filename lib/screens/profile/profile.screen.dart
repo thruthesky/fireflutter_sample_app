@@ -11,7 +11,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<ProfileScreen> {
   TextEditingController displayNameController =
-      TextEditingController(text: ff.user.displayName);
+      TextEditingController(text: ff.user?.displayName ?? '');
   TextEditingController favoriteColorController =
       TextEditingController(text: ff.userData['favoriteColor']);
 
