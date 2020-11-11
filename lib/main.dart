@@ -137,11 +137,13 @@ class _MainAppState extends State<MainApp> {
         GetPage(name: 'search', page: () => SearchScreen()),
       ],
       routingCallback: (routing) {
-        if (ff.user.phoneNumber.isNullOrBlank &&
-            ff.appSetting('force-verification') ==
-                true) if (routing.current != 'home') {
-          WidgetsBinding.instance
-              .addPostFrameCallback((_) => Get.offNamed('phone-auth'));
+        if (ff.loggedIn) {
+          if (ff.user.phoneNumber.isNullOrBlank &&
+              ff.appSetting('force-verification') ==
+                  true) if (routing.current != 'home') {
+            WidgetsBinding.instance
+                .addPostFrameCallback((_) => Get.offNamed('phone-auth'));
+          }
         }
       },
     );
