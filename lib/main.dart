@@ -1,6 +1,7 @@
 import 'package:fireflutter_sample_app/screens/admin/admin.screen.dart';
 import 'package:fireflutter_sample_app/screens/admin/admin.category.screen.dart';
 import 'package:fireflutter_sample_app/screens/forum/forum.edit.dart';
+import 'package:fireflutter_sample_app/screens/forum/forum.list.dart';
 import 'package:fireflutter_sample_app/screens/home/home.screen.dart';
 import 'package:fireflutter_sample_app/screens/login/login.screen.dart';
 import 'package:fireflutter_sample_app/screens/profile/profile.screen.dart';
@@ -27,6 +28,8 @@ class _MainAppState extends State<MainApp> {
   void initState() {
     super.initState();
     ff.translationsChange.listen((x) => setState(() => updateTranslations(x)));
+    // Timer(Duration(milliseconds: 200),
+    //     () => Get.toNamed('forum-list', arguments: {'category': 'qna'}));
   }
 
   @override
@@ -44,6 +47,7 @@ class _MainAppState extends State<MainApp> {
         GetPage(name: 'admin', page: () => AdminScreen()),
         GetPage(name: 'admin-category', page: () => AdminCategoryScreen()),
         GetPage(name: 'forum-edit', page: () => ForumEditScreen()),
+        GetPage(name: 'forum-list', page: () => ForumListScreen()),
       ],
     );
   }

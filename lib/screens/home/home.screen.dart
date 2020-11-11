@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
               builder: (context, snapshot) {
                 if (ff.userIsLoggedIn) {
                   return Text(
-                      'Email: ${ff.user.email}, displayName: ${ff.user.displayName}');
+                      'Uid: ${ff.user.uid}, Email: ${ff.user.email}, displayName: ${ff.user.displayName}');
                 } else {
                   return Text('You are not logged in.');
                 }
@@ -62,7 +62,17 @@ class _HomeScreenState extends State<HomeScreen> {
               RaisedButton(
                 onPressed: () =>
                     Get.toNamed('forum-edit', arguments: {'category': 'qna'}),
-                child: Text('QnA'),
+                child: Text('Create a Post'),
+              ),
+              RaisedButton(
+                onPressed: () =>
+                    Get.toNamed('forum-list', arguments: {'category': 'qna'}),
+                child: Text('QnA Forum'),
+              ),
+              RaisedButton(
+                onPressed: () => Get.toNamed('forum-list',
+                    arguments: {'category': 'discussion'}),
+                child: Text('Discussion Forum'),
               ),
             ],
           ),
