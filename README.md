@@ -13,8 +13,8 @@ This is a sample app to demonstrate how to use [FireFlutter](https://pub.dev/pac
   - social-login. social login. Google, Apple, Facebook.
   - login-with-email-password.
   - translations. text translation.
-  - admin-page. adding admin page
-  - category-admin. adding category management page
+  - admin-page. adding admin page.
+  - category-admin. adding category management page and do the code. For using admin page, yo need to login as admin. Read how to set admin in fireflutter README.md if you don't know.
   - post-edit. post create without post update
   - photo-upload. file upload code without file delete
   - forum-list
@@ -24,7 +24,6 @@ This is a sample app to demonstrate how to use [FireFlutter](https://pub.dev/pac
     - Displaying 'no posts' message if there is no post created under a forum.
     - Displaying 'no more posts' message if there is no more posts to fetch.
   - forum-list-with-photo
-  - post-edit.
   - post-delete.
   - vote.
   - comment-crud.
