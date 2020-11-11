@@ -24,7 +24,6 @@ This is a sample app to demonstrate how to use [FireFlutter](https://pub.dev/pac
     - Displaying 'no posts' message if there is no post created under a forum.
     - Displaying 'no more posts' message if there is no more posts to fetch.
   - forum-list-with-photo
-  - post-edit
   - post-delete
   - vote
   - comment-crud
