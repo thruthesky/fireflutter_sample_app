@@ -126,7 +126,7 @@ packages:
       name: coverage
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.14.1"
+    version: "0.14.2"
   crypto:
     dependency: transitive
     description:
@@ -249,9 +249,9 @@ packages:
   fireflutter:
     dependency: "direct main"
     description:
-      path: "packages/fireflutter"
-      relative: true
-    source: path
+      name: fireflutter
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "0.0.27"
   flutter:
     dependency: "direct main"
@@ -305,7 +305,7 @@ packages:
       name: get
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.15.0"
+    version: "3.16.1"
   glob:
     dependency: transitive
     description:
@@ -361,7 +361,7 @@ packages:
       name: image_picker
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.7+12"
+    version: "0.6.7+14"
   image_picker_platform_interface:
     dependency: transitive
     description:
