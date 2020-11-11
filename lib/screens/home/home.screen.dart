@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
           StreamBuilder(
               stream: ff.userChange,
               builder: (context, snapshot) {
-                if (ff.userIsLoggedIn) {
+                if (ff.loggedIn) {
                   return Text(
                       'UID: ${ff.user.uid}, Email: ${ff.user.email}, displayName: ${ff.user.displayName}, Phone: ${ff.user.phoneNumber}');
                 } else {
@@ -96,6 +96,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () => Get.toNamed('forum-list',
                     arguments: {'category': 'discussion'}),
                 child: Text('Discussion Forum'),
+              ),
+              RaisedButton(
+                onPressed: () => Get.toNamed('search'),
+                child: Text('Search'),
               ),
             ],
           ),

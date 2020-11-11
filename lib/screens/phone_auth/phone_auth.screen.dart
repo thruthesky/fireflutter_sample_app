@@ -10,7 +10,7 @@ class PhoneAuthScreen extends StatefulWidget {
 
 class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
   final mobileNumberController = TextEditingController();
-  String countryCode;
+  String countryCode = "+82";
   bool loading = false;
 
   String get internationalNo => countryCode + mobileNumberController.text;

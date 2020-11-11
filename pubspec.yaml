@@ -16,8 +16,7 @@ dependencies:
 
   get: ^3.15.0
   country_code_picker: ^1.6.2
-  fireflutter:
-    path: packages/fireflutter
+  fireflutter: ^0.0.27
 
 dev_dependencies:
   flutter_test:
@@ -25,3 +24,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  
