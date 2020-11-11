@@ -1,14 +1,7 @@
-import 'package:fireflutter/fireflutter.dart';
 import 'package:fireflutter_sample_app/global_variables.dart';
 import 'package:fireflutter_sample_app/keys.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-extension on FireFlutter {
-  getUid() {
-    return user.uid;
-  }
-}
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -23,7 +16,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print('uid: ' + ff.getUid());
     return Scaffold(
       key: ValueKey(Keys.homeScreen),
       appBar: AppBar(
