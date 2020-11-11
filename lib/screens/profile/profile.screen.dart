@@ -108,11 +108,9 @@ class _RegisterScreenState extends State<ProfileScreen> {
                       await ff.updateProfile({
                         'displayName': displayNameController.text,
                         'favoriteColor': favoriteColorController.text
-                      }, meta: {
-                        "public": {
-                          "notifyPost": true,
-                          "notifyComment": true,
-                        }
+                      }, public: {
+                        "notifyPost": true,
+                        "notifyComment": true,
                       });
                       setState(() => loading = false);
 
