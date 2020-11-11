@@ -12,11 +12,11 @@ import 'package:fireflutter_sample_app/screens/phone_auth/phone_auth_verificatio
 import 'package:fireflutter_sample_app/screens/profile/profile.screen.dart';
 import 'package:fireflutter_sample_app/screens/push-notification/push-notification.screen.dart';
 import 'package:fireflutter_sample_app/screens/register/register.screen.dart';
+import 'package:fireflutter_sample_app/screens/search/search.screen.dart';
 import 'package:fireflutter_sample_app/screens/settings/settings.screen.dart';
 import 'package:fireflutter_sample_app/translations.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'dart:ui' as ui;
 import './global_variables.dart';
 
 void main() async {
@@ -24,12 +24,17 @@ void main() async {
   await ff.init(
     settings: {
       'app': {
+        'default-language': 'ko',
         'verify-after-register': true,
         'verify-after-login': true,
         'force-verification': false,
         'block-non-verified-users-to-create': false,
+        'ALGOLIA_APP_ID': "W42X6RIXO5",
+        'ALGOLIA_SEARCH_KEY': "710ce6c481caf890163ba0c24573130f",
+        'ALGOLIA_INDEX_NAME': "Dev"
       },
     },
+    translations: translations,
     enableNotification: true,
     firebaseServerToken:
         'AAAAWrjrK94:APA91bGJuMd80xlpz1m8W61PxCS_2Ir_5y4mUcjPMUlNi-wGGaFoXQL9XiUTjBSv8fCSBBWa9-GTsuFNPWfrCF9TFOCmeJgzxtXfuS5EgH1NWEuEmlerbFAz-XIa2DYEpyQWkWwhFQJa',
@@ -47,6 +52,11 @@ class _MainAppState extends State<MainApp> {
   void initState() {
     super.initState();
     ff.translationsChange.listen((x) => setState(() => updateTranslations(x)));
+    ff.userChange.listen((x) {
+      setState(() {
+        Get.updateLocale(Locale(ff.userLanguage));
+      });
+    });
     Timer(Duration(milliseconds: 200), () {
       // Get.toNamed(
       //   'forum-list',
@@ -62,56 +72,52 @@ class _MainAppState extends State<MainApp> {
       // Get.toNamed('settings');
     });
 
-    ff.notification.listen(
-      (x) {
-        Map<dynamic, dynamic> notification = x['notification'];
-        Map<dynamic, dynamic> data = x['data'];
-        NotificationType type = x['type'];
-        // print('NotificationType: $type');
-        // print('notification: $notification');
-        // print('data: $data');
+    ff.notification.listen((x) {
+      Map<dynamic, dynamic> notification = x['notification'];
+      Map<dynamic, dynamic> data = x['data'];
+      NotificationType type = x['type'];
+      // print('NotificationType: $type');
+      // print('notification: $notification');
+      // print('data: $data');
 
-        /// Ignore message from myself.
-        if (data['senderUid'] == ff.user.uid) {
-          return;
+      /// Ignore message from myself.
+      if (data['senderUid'] == ff.user.uid) {
+        return;
+      }
+      if (type == NotificationType.onMessage) {
+        Get.snackbar(
+          notification['title'].toString(),
+          notification['body'].toString(),
+          onTap: (_) {
+            if (data != null && data['screen'] != null) {
+              Get.toNamed(data['screen'], arguments: {'id': data['id'] ?? ''});
+            }
+          },
+          mainButton: (data != null && data['screen'] != null)
+              ? FlatButton(
+                  child: Text('Open'),
+                  onPressed: () {
+                    Get.toNamed(data['screen'],
+                        arguments: {'id': data['id'] ?? ''});
+                  },
+                )
+              : Container(),
+        );
+      } else {
+        /// App will come here when the user open the app by tapping a push notification on the system tray.
+        if (data != null && data['screen'] != null) {
+          Get.toNamed(data['screen'],
+              arguments: {'id': data['id'] ?? '', 'data': data});
         }
-        if (type == NotificationType.onMessage) {
-          Get.snackbar(
-            notification['title'].toString(),
-            notification['body'].toString(),
-            onTap: (_) {
-              if (data != null && data['screen'] != null) {
-                Get.toNamed(data['screen'],
-                    arguments: {'id': data['id'] ?? ''});
-              }
-            },
-            mainButton: (data != null && data['screen'] != null)
-                ? FlatButton(
-                    child: Text('Open'),
-                    onPressed: () {
-                      Get.toNamed(data['screen'],
-                          arguments: {'id': data['id'] ?? ''});
-                    },
-                  )
-                : Container(),
-          );
-        } else {
-          /// App will come here when the user open the app by tapping a push notification on the system tray.
-          if (data != null && data['screen'] != null) {
-            Get.toNamed(data['screen'],
-                arguments: {'id': data['id'] ?? '', 'data': data});
-          }
-        }
-      },
-    );
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       initialRoute: 'home',
-      locale: ui.window.locale ?? Locale('ko'),
-      fallbackLocale: Locale('ko'),
+      locale: Locale(ff.userLanguage),
       translations: AppTranslations(),
       getPages: [
         GetPage(name: 'home', page: () => HomeScreen()),
@@ -128,13 +134,16 @@ class _MainAppState extends State<MainApp> {
             page: () => PhoneAuthCodeVerificationScreen()),
         GetPage(name: 'push-notification', page: () => PushNotification()),
         GetPage(name: 'settings', page: () => SettingsScreen()),
+        GetPage(name: 'search', page: () => SearchScreen()),
       ],
       routingCallback: (routing) {
-        if (ff.user.phoneNumber.isNullOrBlank &&
-            ff.appSetting('force-verification') ==
-                true) if (routing.current != 'home') {
-          WidgetsBinding.instance
-              .addPostFrameCallback((_) => Get.offNamed('phone-auth'));
+        if (ff.loggedIn) {
+          if (ff.user.phoneNumber.isNullOrBlank &&
+              ff.appSetting('force-verification') ==
+                  true) if (routing.current != 'home') {
+            WidgetsBinding.instance
+                .addPostFrameCallback((_) => Get.offNamed('phone-auth'));
+          }
         }
       },
     );
