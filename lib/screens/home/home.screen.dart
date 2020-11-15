@@ -1,3 +1,4 @@
+import 'package:fireflutter_sample_app/chat.test.dart';
 import 'package:fireflutter_sample_app/global_variables.dart';
 import 'package:fireflutter_sample_app/keys.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+
+    ChatTest ct = ChatTest();
+    ct.run();
   }
 
   @override
@@ -115,6 +119,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           Divider(),
+          RaisedButton(
+            onPressed: () => Get.toNamed('chat'),
+            child: Text('Chat'),
+          ),
           RaisedButton(
             onPressed: () => Get.toNamed('push-notification'),
             child: Text('Push Notification'),

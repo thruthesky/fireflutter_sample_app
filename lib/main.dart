@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:fireflutter/fireflutter.dart';
 import 'package:fireflutter_sample_app/screens/admin/admin.screen.dart';
 import 'package:fireflutter_sample_app/screens/admin/admin.category.screen.dart';
+import 'package:fireflutter_sample_app/screens/chat/chat.screen.dart';
 import 'package:fireflutter_sample_app/screens/forum/post.edit.screen.dart';
 import 'package:fireflutter_sample_app/screens/forum/post.list.screen.dart';
 import 'package:fireflutter_sample_app/screens/home/home.screen.dart';
@@ -138,6 +139,7 @@ class _MainAppState extends State<MainApp> {
         GetPage(name: 'push-notification', page: () => PushNotification()),
         GetPage(name: 'settings', page: () => SettingsScreen()),
         GetPage(name: 'search', page: () => SearchScreen()),
+        GetPage(name: 'chat', page: () => ChatScreen()),
       ],
       routingCallback: (routing) {
         if (ff.loggedIn) {
