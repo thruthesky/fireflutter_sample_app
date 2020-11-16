@@ -38,7 +38,7 @@ class _ChatFrontScreenState extends State<ChatFrontScreen> {
     /// TODO display title
     /// TODO display last message
     /// TODO display no of new messages
-    ///
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Chat'),
