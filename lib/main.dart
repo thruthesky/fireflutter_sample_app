@@ -3,8 +3,9 @@ import 'dart:async';
 import 'package:fireflutter/fireflutter.dart';
 import 'package:fireflutter_sample_app/screens/admin/admin.screen.dart';
 import 'package:fireflutter_sample_app/screens/admin/admin.category.screen.dart';
-import 'package:fireflutter_sample_app/screens/chat/chat.screen.dart';
-import 'package:fireflutter_sample_app/screens/chat/find_friend.screen.dart';
+import 'package:fireflutter_sample_app/screens/chat/chat.chatting.screen.dart';
+import 'package:fireflutter_sample_app/screens/chat/chat.front.screen.dart';
+import 'package:fireflutter_sample_app/screens/chat/chat.find_friend.screen.dart';
 import 'package:fireflutter_sample_app/screens/forum/post.edit.screen.dart';
 import 'package:fireflutter_sample_app/screens/forum/post.list.screen.dart';
 import 'package:fireflutter_sample_app/screens/home/home.screen.dart';
@@ -20,7 +21,6 @@ import 'package:fireflutter_sample_app/translations.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import './global_variables.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -77,6 +77,9 @@ class _MainAppState extends State<MainApp> {
       //   print(ff.user.email);
       // }();
       // Get.toNamed('settings');
+
+      // Get.toNamed('chat-find-friend');
+      Get.toNamed('chat-front');
     });
 
     ff.notification.listen((x) {
@@ -142,8 +145,9 @@ class _MainAppState extends State<MainApp> {
         GetPage(name: 'push-notification', page: () => PushNotification()),
         GetPage(name: 'settings', page: () => SettingsScreen()),
         GetPage(name: 'search', page: () => SearchScreen()),
-        GetPage(name: 'chat', page: () => ChatScreen()),
-        GetPage(name: 'find-friend', page: () => FindFriendScreen()),
+        GetPage(name: 'chat-front', page: () => ChatFrontScreen()),
+        GetPage(name: 'chat-find-friend', page: () => ChatFindFriendScreen()),
+        GetPage(name: 'chat-chatting', page: () => ChatChattingScreen()),
       ],
       routingCallback: (routing) {
         if (ff.loggedIn) {

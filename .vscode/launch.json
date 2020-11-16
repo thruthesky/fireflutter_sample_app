@@ -1,73 +1,68 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-
-        {
-            "name": "Current Device",
-            "program": "lib/main.dart",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "Pixel 3a - Android",
-            "request": "launch",
-            "type": "dart",
-            "deviceId": "emulator-5554"
-        },
-        {
-            "name": "Simulator - iPhone 11 Pro - 14.0",
-            "request": "launch",
-            "type": "dart",
-            "deviceId": "DD183AE3-66CE-4282-A2BA-ADEBEA771AA8"
-        },
-        {
-            "name": "iPhone 11",
-            "request": "launch",
-            "type": "dart",
-            "deviceId": "00008030-000904C80290802E"
-        },
-        {
-            "name": "iPhone 11 Pro Max",
-            "request": "launch",
-            "type": "dart",
-            "deviceId": "B33AA4A3-1FBA-4FC1-AC49-26465C64EB78"
-        },
-        {
-            "name": "App Instrument Emulator",
-            "program": "test_driver/app.dart",
-            "request": "launch",
-            "type": "dart",
-            "args": [
-                "--observatory-port",
-                "12345",
-                "--disable-service-auth-codes"
-            ],
-            "deviceId": "emulator-5554"
-         },
-        {
-            "name": "App Instrument Simulator",
-            "program": "test_driver/app.dart",
-            "request": "launch",
-            "type": "dart",
-            "args": [
-                "--observatory-port",
-                "12345",
-                "--disable-service-auth-codes"
-            ],
-            "deviceId": "004CE606-8161-441D-8AB7-7FA5DEC5DAF0"
-         }         
-    ],
-    "compounds": [
-        {
-            "name": "All Devices",
-            "configurations": [
-                "Pixel 3a - Android",
-                "Simulator - iPhone 11 Pro - 14.0",
-                "iPhone 11"
-            ],
-        }
-    ] 
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Current Device",
+      "program": "lib/main.dart",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
+      "name": "Pixel 3a - Android",
+      "program": "lib/main.dart",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "emulator-5554"
+    },
+    {
+      "name": "Simulator - iPhone 11 Pro - 14.0",
+      "program": "lib/main.dart",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "DD183AE3-66CE-4282-A2BA-ADEBEA771AA8"
+    },
+    {
+      "name": "iPhone 11",
+      "program": "lib/main.dart",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "00008030-000904C80290802E"
+    },
+    {
+      "name": "iPhone11ProMax",
+      "program": "lib/main.dart",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "00008030-000904C80290802E"
+    },
+    {
+      "name": "App Instrument Emulator",
+      "program": "test_driver/app.dart",
+      "request": "launch",
+      "type": "dart",
+      "args": ["--observatory-port", "12345", "--disable-service-auth-codes"],
+      "deviceId": "emulator-5554"
+    },
+    {
+      "name": "App Instrument Simulator",
+      "program": "test_driver/app.dart",
+      "request": "launch",
+      "type": "dart",
+      "args": ["--observatory-port", "12345", "--disable-service-auth-codes"],
+      "deviceId": "004CE606-8161-441D-8AB7-7FA5DEC5DAF0"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "All Devices",
+      "configurations": [
+        "Pixel 3a - Android",
+        "Simulator - iPhone 11 Pro - 14.0",
+        "iPhone 11"
+      ]
+    }
+  ]
 }
