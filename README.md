@@ -34,4 +34,4 @@ This is a sample app to demonstrate how to use [FireFlutter](https://pub.dev/pac
   - integration-test. The sample app is following the standard Flutter integration test. You can run and test exactly the same way of Flutter integration test.
   - vote-settings. To show or hide like/dislike buttons on each forum. You can test it editing the settings on Firestore.
   - forum-subscription
-  - 
+  - chat
