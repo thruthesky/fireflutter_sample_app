@@ -4,6 +4,7 @@ import 'package:fireflutter/fireflutter.dart';
 import 'package:fireflutter_sample_app/screens/admin/admin.screen.dart';
 import 'package:fireflutter_sample_app/screens/admin/admin.category.screen.dart';
 import 'package:fireflutter_sample_app/screens/chat/chat.screen.dart';
+import 'package:fireflutter_sample_app/screens/chat/find_friend.screen.dart';
 import 'package:fireflutter_sample_app/screens/forum/post.edit.screen.dart';
 import 'package:fireflutter_sample_app/screens/forum/post.list.screen.dart';
 import 'package:fireflutter_sample_app/screens/home/home.screen.dart';
@@ -20,9 +21,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import './global_variables.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ff.init(
+    enableChat: true,
     settings: {
       'app': {
         'default-language': 'ko',
@@ -140,6 +143,7 @@ class _MainAppState extends State<MainApp> {
         GetPage(name: 'settings', page: () => SettingsScreen()),
         GetPage(name: 'search', page: () => SearchScreen()),
         GetPage(name: 'chat', page: () => ChatScreen()),
+        GetPage(name: 'find-friend', page: () => FindFriendScreen()),
       ],
       routingCallback: (routing) {
         if (ff.loggedIn) {
