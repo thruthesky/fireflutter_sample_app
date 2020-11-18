@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:fireflutter/fireflutter.dart';
 import 'package:fireflutter_sample_app/global_variables.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +20,8 @@ class _ChatFrontScreenState extends State<ChatFrontScreen> {
     myRoomList = ChatMyRoomList(
         inject: ff,
         render: () {
-          // print('no of my rooms: ' + roomList.rooms.length.toString());
-          print(myRoomList.rooms);
+          // print('no of my rooms: ' + myRoomList.rooms.length.toString());
+          // print(myRoomList.rooms);
           setState(() {});
         });
   }

@@ -42,8 +42,21 @@ class _ChatFindFriendScreenState extends State<ChatFindFriendScreen> {
                 title: Text(users[i]['displayName'] ?? ''),
                 subtitle: Text(users[i]['uid']),
                 trailing: Icon(Icons.add),
-                onTap: () {
-                  Get.toNamed('chat.room', arguments: {'uid': users[i]['uid']});
+                onTap: () async {
+                  if (Get.arguments != null &&
+                      Get.arguments['roomId'] != null) {
+                    try {
+                      ff.chatAddUser(Get.arguments['roomId'],
+                          {users[i]['uid']: users[i]['displayName'] ?? ''});
+                      Get.back();
+                    } catch (e) {
+                      Get.snackbar('Erro', e.toString());
+                    }
+                  } else {
+                    /// todo create room here and enter the room.
+                    Get.toNamed('chat.room',
+                        arguments: {'uid': users[i]['uid']});
+                  }
                 },
               );
             },
