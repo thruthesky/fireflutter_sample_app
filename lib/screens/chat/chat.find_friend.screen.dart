@@ -46,11 +46,11 @@ class _ChatFindFriendScreenState extends State<ChatFindFriendScreen> {
                   if (Get.arguments != null &&
                       Get.arguments['roomId'] != null) {
                     try {
-                      ff.chatAddUser(Get.arguments['roomId'],
+                      await ff.chatAddUser(Get.arguments['roomId'],
                           {users[i]['uid']: users[i]['displayName'] ?? ''});
                       Get.back();
                     } catch (e) {
-                      Get.snackbar('Erro', e.toString());
+                      Get.snackbar('Error', e.toString());
                     }
                   } else {
                     /// todo create room here and enter the room.

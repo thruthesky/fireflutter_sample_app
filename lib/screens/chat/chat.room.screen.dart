@@ -8,6 +8,12 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
+///
+/// todo display proper error message on permission denied. like when user tries to block another user. it must be doen by a moderator.
+/// todo when a user is blocked from a chat room, then the chat room should be automatically closed if the user is in and the room in room list should be deleted.
+/// todo document logic - when a user is in chat room and blocked by moderator, the user received no more messages except the [chat:blocked] message.
+/// todo docuemnt logic - when a user is blocked, no can add the user again until moderator removes the user from `blockedUsers` property.
+///
 class ChatRoomScreen extends StatefulWidget {
   @override
   _ChatRoomScreenState createState() => _ChatRoomScreenState();
@@ -197,7 +203,27 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
                             Map<String, dynamic> message = chat.messages[i];
                             return ListTile(
                               title: Text(messageText(message)),
-                              subtitle: Text(dateTime(message['createdAt'])),
+                              subtitle: Text(
+                                'By ${message['senderDisplayName']} ${message['id']} ' +
+                                    dateTime(message['createdAt']),
+                                style: TextStyle(fontSize: 8),
+                              ),
+                              trailing: IconButton(
+                                icon: Icon(Icons.remove_circle),
+                                onPressed: () async {
+                                  try {
+                                    await ff.chatBlockUser(
+                                      chat.info['id'],
+                                      message['senderUid'],
+                                      message['senderDisplayName'],
+                                    );
+                                    Get.snackbar('User blocked',
+                                        "${message['senderDisplayName']} has been blocked.");
+                                  } catch (e) {
+                                    Get.snackbar('Error', e.toString());
+                                  }
+                                },
+                              ),
                             );
                           }),
                     ),
