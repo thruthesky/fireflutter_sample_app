@@ -120,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Divider(),
           RaisedButton(
-            onPressed: () => Get.toNamed('chat-front'),
+            onPressed: () => Get.toNamed('chat.front'),
             child: Text('Chat'),
           ),
           RaisedButton(

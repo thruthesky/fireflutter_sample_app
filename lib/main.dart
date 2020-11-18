@@ -3,9 +3,10 @@ import 'dart:async';
 import 'package:fireflutter/fireflutter.dart';
 import 'package:fireflutter_sample_app/screens/admin/admin.screen.dart';
 import 'package:fireflutter_sample_app/screens/admin/admin.category.screen.dart';
-import 'package:fireflutter_sample_app/screens/chat/chat.chatting.screen.dart';
+import 'package:fireflutter_sample_app/screens/chat/chat.room.screen.dart';
 import 'package:fireflutter_sample_app/screens/chat/chat.front.screen.dart';
 import 'package:fireflutter_sample_app/screens/chat/chat.find_friend.screen.dart';
+import 'package:fireflutter_sample_app/screens/chat/chat.room_setting.screen.dart';
 import 'package:fireflutter_sample_app/screens/forum/post.edit.screen.dart';
 import 'package:fireflutter_sample_app/screens/forum/post.list.screen.dart';
 import 'package:fireflutter_sample_app/screens/home/home.screen.dart';
@@ -25,7 +26,7 @@ import './global_variables.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ff.init(
-    enableChat: true,
+    openProfile: true,
     settings: {
       'app': {
         'default-language': 'ko',
@@ -78,8 +79,8 @@ class _MainAppState extends State<MainApp> {
       // }();
       // Get.toNamed('settings');
 
-      // Get.toNamed('chat-find-friend');
-      Get.toNamed('chat-front');
+      // Get.toNamed('chat.find_friend');
+      Get.toNamed('chat.front');
     });
 
     ff.notification.listen((x) {
@@ -135,7 +136,7 @@ class _MainAppState extends State<MainApp> {
         GetPage(name: 'login', page: () => LoginScreen()),
         GetPage(name: 'profile', page: () => ProfileScreen()),
         GetPage(name: 'admin', page: () => AdminScreen()),
-        GetPage(name: 'admin-category', page: () => AdminCategoryScreen()),
+        GetPage(name: 'admin.category', page: () => AdminCategoryScreen()),
         GetPage(name: 'forum-edit', page: () => ForumEditScreen()),
         GetPage(name: 'forum-list', page: () => ForumListScreen()),
         GetPage(name: 'phone-auth', page: () => PhoneAuthScreen()),
@@ -145,9 +146,10 @@ class _MainAppState extends State<MainApp> {
         GetPage(name: 'push-notification', page: () => PushNotification()),
         GetPage(name: 'settings', page: () => SettingsScreen()),
         GetPage(name: 'search', page: () => SearchScreen()),
-        GetPage(name: 'chat-front', page: () => ChatFrontScreen()),
-        GetPage(name: 'chat-find-friend', page: () => ChatFindFriendScreen()),
-        GetPage(name: 'chat-chatting', page: () => ChatChattingScreen()),
+        GetPage(name: 'chat.front', page: () => ChatFrontScreen()),
+        GetPage(name: 'chat.find_friend', page: () => ChatFindFriendScreen()),
+        GetPage(name: 'chat.room', page: () => ChatRoomScreen()),
+        GetPage(name: 'chat.room_setting', page: () => ChatRoomSettingScreen()),
       ],
       routingCallback: (routing) {
         if (ff.loggedIn) {

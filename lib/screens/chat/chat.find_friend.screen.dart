@@ -43,8 +43,7 @@ class _ChatFindFriendScreenState extends State<ChatFindFriendScreen> {
                 subtitle: Text(users[i]['uid']),
                 trailing: Icon(Icons.add),
                 onTap: () {
-                  Get.toNamed('chat-chatting',
-                      arguments: {'uid': users[i]['uid']});
+                  Get.toNamed('chat.room', arguments: {'uid': users[i]['uid']});
                 },
               );
             },

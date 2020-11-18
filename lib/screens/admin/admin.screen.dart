@@ -16,7 +16,7 @@ class _AdminScreenState extends State<AdminScreen> {
       body: Column(
         children: [
           RaisedButton(
-            onPressed: () => Get.toNamed('admin-category'),
+            onPressed: () => Get.toNamed('admin.category'),
             child: Text('Forum Category'),
           ),
         ],

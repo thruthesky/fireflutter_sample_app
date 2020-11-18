@@ -13,15 +13,17 @@ class ChatFrontScreen extends StatefulWidget {
 }
 
 class _ChatFrontScreenState extends State<ChatFrontScreen> {
-  ChatMyRoomList roomList;
+  ChatMyRoomList myRoomList;
   @override
   void initState() {
     super.initState();
 
-    roomList = ChatMyRoomList(
+    /// This may be moved to home screen.
+    myRoomList = ChatMyRoomList(
         inject: ff,
         render: () {
-          print(roomList.rooms.length);
+          // print('no of my rooms: ' + roomList.rooms.length.toString());
+          print(myRoomList.rooms);
           setState(() {});
         });
   }
@@ -29,7 +31,7 @@ class _ChatFrontScreenState extends State<ChatFrontScreen> {
   @override
   void dispose() {
     super.dispose();
-    roomList.leave();
+    myRoomList.leave();
   }
 
   @override
@@ -52,7 +54,7 @@ class _ChatFrontScreenState extends State<ChatFrontScreen> {
               Row(
                 children: [
                   RaisedButton(
-                    onPressed: () => Get.toNamed('chat-find-friend'),
+                    onPressed: () => Get.toNamed('chat.find_friend'),
                     child: Text('Find Friends'),
                   ),
                 ],
@@ -62,14 +64,16 @@ class _ChatFrontScreenState extends State<ChatFrontScreen> {
               ListView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
-                  itemCount: roomList.rooms.length,
+                  itemCount: myRoomList.rooms.length,
                   itemBuilder: (_, i) {
                     return ListTile(
-                      title: Text(roomList.rooms[i]['title'] ?? ''),
-                      subtitle: Text(roomList.rooms[i]['id']),
+                      title: Text(myRoomList.rooms[i]['title'] ?? ''),
+                      subtitle: Text(myRoomList.rooms[i]['id'] +
+                          ': ' +
+                          myRoomList.rooms[i]['text']),
                       trailing: Icon(Icons.arrow_right),
-                      onTap: () => Get.toNamed('chat-chatting',
-                          arguments: {'info': roomList.rooms[i]}),
+                      onTap: () => Get.toNamed('chat.room',
+                          arguments: {'info': myRoomList.rooms[i]}),
                     );
                   }),
             ],
