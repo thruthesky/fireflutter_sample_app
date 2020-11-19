@@ -13,7 +13,6 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 /// todo when a user is blocked from a chat room, then the chat room should be automatically closed if the user is in and the room in room list should be deleted.
 /// todo document logic - when a user is in chat room and blocked by moderator, the user received no more messages except the [chat:blocked] message.
 /// todo docuemnt logic - when a user is blocked, no can add the user again until moderator removes the user from `blockedUsers` property.
-///
 class ChatRoomScreen extends StatefulWidget {
   @override
   _ChatRoomScreenState createState() => _ChatRoomScreenState();
@@ -28,7 +27,7 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
   StreamSubscription keyboardSubscription;
 
   String get title {
-    if (chat.info == null) return 'Chatting Room';
+    if (chat?.info == null) return 'Chatting Room';
     String _title = '';
     if (chat.info['users'].length > 0)
       _title += "[${chat.info['users'].length}] ";
@@ -172,7 +171,17 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
           IconButton(
               icon: Icon(Icons.settings),
               onPressed: () => Get.toNamed('chat.room_setting',
-                  arguments: {'roomId': chat.info['id']}))
+                  arguments: {'roomId': chat.info['id']})),
+          IconButton(
+              icon: Icon(Icons.logout),
+              onPressed: () async {
+                try {
+                  await ff.chatRoomLeave(chat.info['id']);
+                  Get.back();
+                } catch (e) {
+                  Get.snackbar('Error', e.toString());
+                }
+              })
         ],
       ),
       body: Container(

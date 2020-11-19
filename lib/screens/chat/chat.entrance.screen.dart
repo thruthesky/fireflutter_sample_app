@@ -32,13 +32,14 @@ class _ChatEntranceScreenState extends State<ChatEntranceScreen> {
     myRoomList.leave();
   }
 
+  senderPhoto(Map<String, dynamic> roomInfo) {
+    if (roomInfo == null) return SizedBox.shrink();
+    if (roomInfo['senderPhotoURL'] == null) return SizedBox.shrink();
+    return Image.network(roomInfo['senderPhotoURL']);
+  }
+
   @override
   Widget build(BuildContext context) {
-    /// TODO display user name and photo
-    /// TODO display title
-    /// TODO display last message
-    /// TODO display no of new messages
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Chat'),
@@ -64,14 +65,19 @@ class _ChatEntranceScreenState extends State<ChatEntranceScreen> {
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: myRoomList.rooms.length,
                   itemBuilder: (_, i) {
+                    Map<String, dynamic> room = myRoomList.rooms[i];
                     return ListTile(
-                      title: Text(myRoomList.rooms[i]['title'] ?? ''),
-                      subtitle: Text(myRoomList.rooms[i]['id'] +
+                      leading: senderPhoto(room),
+                      title: Text(
+                          (room['title'] ?? '') + " (${room['newMessages']})"),
+                      subtitle: Text(room['id'] +
                           ': ' +
-                          myRoomList.rooms[i]['text']),
+
+                          /// todo make a method, `chat.text()` to get text of the message.
+                          room['text']),
                       trailing: Icon(Icons.arrow_right),
-                      onTap: () => Get.toNamed('chat.room',
-                          arguments: {'info': myRoomList.rooms[i]}),
+                      onTap: () =>
+                          Get.toNamed('chat.room', arguments: {'info': room}),
                     );
                   }),
             ],
