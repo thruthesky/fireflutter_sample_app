@@ -20,8 +20,6 @@ class _ChatEntranceScreenState extends State<ChatEntranceScreen> {
     myRoomList = ChatMyRoomList(
         inject: ff,
         render: () {
-          // print('no of my rooms: ' + myRoomList.rooms.length.toString());
-          // print(myRoomList.rooms);
           setState(() {});
         });
   }

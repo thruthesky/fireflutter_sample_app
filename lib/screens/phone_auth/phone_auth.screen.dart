@@ -61,7 +61,7 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
                 setState(() => loading = true);
 
                 /// TODO: validate phone number format.
-                print('no: $internationalNo');
+                // print('no: $internationalNo');
                 ff.mobileAuthSendCode(internationalNo,
                     onCodeSent: (verificationID, codeResendToken) {
                   setState(() => loading = false);

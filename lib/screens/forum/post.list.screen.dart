@@ -78,7 +78,7 @@ class _ForumListScreenState extends State<ForumListScreen> {
                   if (snapshot.hasError) return Container();
                   if (snapshot.connectionState == ConnectionState.waiting)
                     return Container();
-                  print('data: ${snapshot.data.data()}');
+                  // print('data: ${snapshot.data.data()}');
                   Map<String, dynamic> data = snapshot.data.data();
                   bool postEnabled =
                       data[NotificationOptions.post(category)] ?? false;

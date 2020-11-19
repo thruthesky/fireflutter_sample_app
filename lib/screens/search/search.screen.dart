@@ -98,7 +98,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
                           String postId = path.split('/')[1];
 
-                          print('postid: $postId from $path');
+                          // print('postid: $postId from $path');
 
                           Get.snackbar('Post view page', postId);
                         },

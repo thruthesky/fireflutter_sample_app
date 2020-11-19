@@ -23,6 +23,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import './global_variables.dart';
 
+// import 'file:///Users/thruthesky/apps/fireflutter_sample_app/packages/fireflutter/test/chat.test.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ff.init(
@@ -80,7 +82,10 @@ class _MainAppState extends State<MainApp> {
       // Get.toNamed('settings');
 
       // Get.toNamed('chat.find_friend');
-      Get.toNamed('chat.front');
+      // Get.toNamed('chat.front');
+
+      // ChatTest ct = ChatTest(ff);
+      // ct.runChatTest();
     });
 
     ff.notification.listen((x) {

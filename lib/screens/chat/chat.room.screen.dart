@@ -46,7 +46,7 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
     else if (chat.page > 1 && chat.noMoreMessage) {
       text = 'No more messages. ';
     } else if (text == Chat.enter) {
-      print(message);
+      // print(message);
       text = "${message['senderDisplayName']} invited ${message['newUsers']}";
     } else {}
 
