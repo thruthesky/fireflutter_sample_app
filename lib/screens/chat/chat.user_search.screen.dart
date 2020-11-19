@@ -2,12 +2,12 @@ import 'package:fireflutter_sample_app/global_variables.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ChatFindFriendScreen extends StatefulWidget {
+class ChatUserSearchScreen extends StatefulWidget {
   @override
-  _ChatFindFriendScreenState createState() => _ChatFindFriendScreenState();
+  _ChatUserSearchScreenState createState() => _ChatUserSearchScreenState();
 }
 
-class _ChatFindFriendScreenState extends State<ChatFindFriendScreen> {
+class _ChatUserSearchScreenState extends State<ChatUserSearchScreen> {
   List<Map<String, dynamic>> users = [];
   @override
   void initState() {

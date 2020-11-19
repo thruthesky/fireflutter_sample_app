@@ -4,8 +4,8 @@ import 'package:fireflutter/fireflutter.dart';
 import 'package:fireflutter_sample_app/screens/admin/admin.screen.dart';
 import 'package:fireflutter_sample_app/screens/admin/admin.category.screen.dart';
 import 'package:fireflutter_sample_app/screens/chat/chat.room.screen.dart';
-import 'package:fireflutter_sample_app/screens/chat/chat.front.screen.dart';
-import 'package:fireflutter_sample_app/screens/chat/chat.find_friend.screen.dart';
+import 'package:fireflutter_sample_app/screens/chat/chat.entrance.screen.dart';
+import 'package:fireflutter_sample_app/screens/chat/chat.user_search.screen.dart';
 import 'package:fireflutter_sample_app/screens/chat/chat.room_setting.screen.dart';
 import 'package:fireflutter_sample_app/screens/forum/post.edit.screen.dart';
 import 'package:fireflutter_sample_app/screens/forum/post.list.screen.dart';
@@ -146,8 +146,8 @@ class _MainAppState extends State<MainApp> {
         GetPage(name: 'push-notification', page: () => PushNotification()),
         GetPage(name: 'settings', page: () => SettingsScreen()),
         GetPage(name: 'search', page: () => SearchScreen()),
-        GetPage(name: 'chat.front', page: () => ChatFrontScreen()),
-        GetPage(name: 'chat.find_friend', page: () => ChatFindFriendScreen()),
+        GetPage(name: 'chat.front', page: () => ChatEntranceScreen()),
+        GetPage(name: 'chat.find_friend', page: () => ChatUserSearchScreen()),
         GetPage(name: 'chat.room', page: () => ChatRoomScreen()),
         GetPage(name: 'chat.room_setting', page: () => ChatRoomSettingScreen()),
       ],

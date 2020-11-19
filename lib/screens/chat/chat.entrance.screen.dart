@@ -3,14 +3,14 @@ import 'package:fireflutter_sample_app/global_variables.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ChatFrontScreen extends StatefulWidget {
-  ChatFrontScreen({Key key}) : super(key: key);
+class ChatEntranceScreen extends StatefulWidget {
+  ChatEntranceScreen({Key key}) : super(key: key);
 
   @override
-  _ChatFrontScreenState createState() => _ChatFrontScreenState();
+  _ChatEntranceScreenState createState() => _ChatEntranceScreenState();
 }
 
-class _ChatFrontScreenState extends State<ChatFrontScreen> {
+class _ChatEntranceScreenState extends State<ChatEntranceScreen> {
   ChatMyRoomList myRoomList;
   @override
   void initState() {
