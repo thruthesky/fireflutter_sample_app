@@ -82,7 +82,7 @@ class _MainAppState extends State<MainApp> {
       // Get.toNamed('settings');
 
       // Get.toNamed('chat.find_friend');
-      // Get.toNamed('chat.front');
+      Get.toNamed('chat.entrance');
 
       // ChatTest ct = ChatTest(ff);
       // ct.runChatTest();
@@ -151,7 +151,7 @@ class _MainAppState extends State<MainApp> {
         GetPage(name: 'push-notification', page: () => PushNotification()),
         GetPage(name: 'settings', page: () => SettingsScreen()),
         GetPage(name: 'search', page: () => SearchScreen()),
-        GetPage(name: 'chat.front', page: () => ChatEntranceScreen()),
+        GetPage(name: 'chat.entrance', page: () => ChatEntranceScreen()),
         GetPage(name: 'chat.find_friend', page: () => ChatUserSearchScreen()),
         GetPage(name: 'chat.room', page: () => ChatRoomScreen()),
         GetPage(name: 'chat.room_setting', page: () => ChatRoomSettingScreen()),

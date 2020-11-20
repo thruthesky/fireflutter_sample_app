@@ -8,11 +8,9 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
-///
-/// todo display proper error message on permission denied. like when user tries to block another user. it must be doen by a moderator.
+/// todo display proper error message on permission denied. like when user tries to block another user. it must be does by a moderator. This can be done by checking if he is one of moderators.
 /// todo when a user is blocked from a chat room, then the chat room should be automatically closed if the user is in and the room in room list should be deleted.
-/// todo document logic - when a user is in chat room and blocked by moderator, the user received no more messages except the [chat:blocked] message.
-/// todo docuemnt logic - when a user is blocked, no can add the user again until moderator removes the user from `blockedUsers` property.
+/// todo file upload.
 class ChatRoomScreen extends StatefulWidget {
   @override
   _ChatRoomScreenState createState() => _ChatRoomScreenState();
@@ -22,7 +20,6 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
   final textController = TextEditingController();
   ChatRoom chat;
   final scrollController = ScrollController();
-  bool firstFetch = false;
 
   StreamSubscription keyboardSubscription;
 
@@ -34,23 +31,6 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
     if (chat.info['title'] != null) _title += chat.info['title'];
 
     return _title;
-  }
-
-  String messageText(Map<String, dynamic> message) {
-    String text = message['text'] ?? '';
-    if (text == Chat.roomCreated) {
-      text = 'Chat room created. ';
-    }
-
-    /// Display `no more messages` only when user scrolled up to see more messages.
-    else if (chat.page > 1 && chat.noMoreMessage) {
-      text = 'No more messages. ';
-    } else if (text == Chat.enter) {
-      // print(message);
-      text = "${message['senderDisplayName']} invited ${message['newUsers']}";
-    } else {}
-
-    return text;
   }
 
   bool get atBottom =>
@@ -77,7 +57,6 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
     init();
   }
 
-  /// TODO listen the room info and maintain the latest room info for updating user list and others.
   init() async {
     String roomId;
 
@@ -98,8 +77,8 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
         render: () {
           setState(() {});
           if (chat.messages.isNotEmpty) {
-            if (!firstFetch) {
-              scrollToBottomOnLoad();
+            if (chat.page == 1) {
+              scrollToBottom(ms: 10);
             } else if (atBottom) {
               scrollToBottom();
             }
@@ -133,12 +112,6 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
   /// * when I chat,
   /// * when new chat is coming and the page is scrolled near to bottom. Logically it should not scroll down when the page is scrolled far from the bottom.
   /// * when keyboard is open and the page scroll is near to bottom. Locally it should not scroll down when the user is reading message that is far from the bottom.
-  scrollToBottomOnLoad() {
-    if (firstFetch == false && chat.messages.length > 0) {
-      firstFetch = true;
-      scrollToBottom(ms: 10);
-    }
-  }
 
   scrollToBottom({int ms = 200}) {
     /// This is needed to safely scroll to bottom after chat messages has been added.
@@ -211,7 +184,7 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
                           itemBuilder: (_, i) {
                             Map<String, dynamic> message = chat.messages[i];
                             return ListTile(
-                              title: Text(messageText(message)),
+                              title: Text(chat.text(message)),
                               subtitle: Text(
                                 'By ${message['senderDisplayName']} ${message['id']} ' +
                                     dateTime(message['createdAt']),
