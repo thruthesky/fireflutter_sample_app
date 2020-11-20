@@ -76,29 +76,29 @@ class _CommentState extends State<Comment> {
                         onPressed: () async {
                           try {
                             await ff.vote(
-                              postId: widget.post['id'],
-                              commentId: comment['id'],
-                              choice: VoteChoice.like,
+                              post: widget.post,
+                              comment: comment,
+                              choice: true,
                             );
                           } catch (e) {
                             Get.snackbar('Error', e.toString());
                           }
                         },
-                        child: Text('Like ${comment['likes'] ?? ''}'),
+                        child: Text('Like ${ff.countLikes(comment)}'),
                       ),
                       TextButton(
                         onPressed: () async {
                           try {
                             await ff.vote(
-                              postId: widget.post['id'],
-                              commentId: comment['id'],
-                              choice: VoteChoice.dislike,
+                              post: widget.post,
+                              comment: comment,
+                              choice: false,
                             );
                           } catch (e) {
                             Get.snackbar('Error', e.toString());
                           }
                         },
-                        child: Text('Dislike ${comment['dislikes'] ?? ''}'),
+                        child: Text('Dislike ${ff.countDislikes(comment)}'),
                       ),
                     ],
                   ),

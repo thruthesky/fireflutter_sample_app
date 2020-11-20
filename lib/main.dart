@@ -37,7 +37,7 @@ void main() async {
         'force-verification': false,
         'block-non-verified-users-to-create': false,
         'ALGOLIA_APP_ID': "W42X6RIXO5",
-        'ALGOLIA_SEARCH_KEY': "710ce6c481caf890163ba0c24573130f",
+        'ALGOLIA_ADMIN_API_KEY': "962a64f527cc761542f6042e522b6023",
         'ALGOLIA_INDEX_NAME': "Dev"
       },
     },
@@ -67,6 +67,7 @@ class _MainAppState extends State<MainApp> {
     ff.settingsChange.listen((settings) {
       setState(() {});
     });
+
     Timer(Duration(milliseconds: 200), () {
       // Get.toNamed(
       //   'forum-list',
@@ -82,7 +83,7 @@ class _MainAppState extends State<MainApp> {
       // Get.toNamed('settings');
 
       // Get.toNamed('chat.find_friend');
-      Get.toNamed('chat.entrance');
+      // Get.toNamed('chat.entrance');
 
       // ChatTest ct = ChatTest(ff);
       // ct.runChatTest();
