@@ -48,6 +48,7 @@ class _ChatUserSearchScreenState extends State<ChatUserSearchScreen> {
                     try {
                       await ff.chatAddUser(Get.arguments['roomId'],
                           {users[i]['uid']: users[i]['displayName'] ?? ''});
+                      // go back to room list or my room.
                       Get.back();
                     } catch (e) {
                       Get.snackbar('Error', e.toString());
