@@ -78,7 +78,7 @@ class _ForumListScreenState extends State<ForumListScreen> {
                   if (snapshot.hasError) return Container();
                   if (snapshot.connectionState == ConnectionState.waiting)
                     return Container();
-                  print('data: ${snapshot.data.data()}');
+                  // print('data: ${snapshot.data.data()}');
                   Map<String, dynamic> data = snapshot.data.data();
                   bool postEnabled =
                       data[NotificationOptions.post(category)] ?? false;
@@ -196,33 +196,27 @@ class PostButtons extends StatelessWidget {
           },
           child: Text('Delete'),
         ),
-        if (ff.voteSetting(post['category'], VoteChoice.like))
+        if (ff.voteSetting(post['category'], 'like'))
           RaisedButton(
             onPressed: () async {
               try {
-                await ff.vote(
-                  postId: post['id'],
-                  choice: VoteChoice.like,
-                );
+                await ff.vote(post: post, choice: true);
               } catch (e) {
                 Get.snackbar('Error', e.toString());
               }
             },
-            child: Text('Like ${post['likes'] ?? ''}'),
+            child: Text('Like ${ff.countLikes(post)}'),
           ),
-        if (ff.voteSetting(post['category'], VoteChoice.dislike))
+        if (ff.voteSetting(post['category'], 'dislike'))
           TextButton(
             onPressed: () async {
               try {
-                await ff.vote(
-                  postId: post['id'],
-                  choice: VoteChoice.dislike,
-                );
+                await ff.vote(post: post, choice: false);
               } catch (e) {
                 Get.snackbar('Error', e.toString());
               }
             },
-            child: Text('Dislike ${post['dislikes'] ?? ''}'),
+            child: Text('Dislike ${ff.countDislikes(post)}'),
           ),
       ],
     );

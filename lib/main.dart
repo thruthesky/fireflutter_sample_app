@@ -23,6 +23,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import './global_variables.dart';
 
+// import 'file:///Users/thruthesky/apps/fireflutter_sample_app/packages/fireflutter/test/chat.test.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ff.init(
@@ -35,7 +37,7 @@ void main() async {
         'force-verification': false,
         'block-non-verified-users-to-create': false,
         'ALGOLIA_APP_ID': "W42X6RIXO5",
-        'ALGOLIA_SEARCH_KEY': "710ce6c481caf890163ba0c24573130f",
+        'ALGOLIA_ADMIN_API_KEY': "962a64f527cc761542f6042e522b6023",
         'ALGOLIA_INDEX_NAME': "Dev"
       },
     },
@@ -65,6 +67,7 @@ class _MainAppState extends State<MainApp> {
     ff.settingsChange.listen((settings) {
       setState(() {});
     });
+
     Timer(Duration(milliseconds: 200), () {
       // Get.toNamed(
       //   'forum-list',
@@ -80,7 +83,10 @@ class _MainAppState extends State<MainApp> {
       // Get.toNamed('settings');
 
       // Get.toNamed('chat.find_friend');
-      Get.toNamed('chat.front');
+      // Get.toNamed('chat.entrance');
+
+      // ChatTest ct = ChatTest(ff);
+      // ct.runChatTest();
     });
 
     ff.notification.listen((x) {
@@ -146,7 +152,7 @@ class _MainAppState extends State<MainApp> {
         GetPage(name: 'push-notification', page: () => PushNotification()),
         GetPage(name: 'settings', page: () => SettingsScreen()),
         GetPage(name: 'search', page: () => SearchScreen()),
-        GetPage(name: 'chat.front', page: () => ChatEntranceScreen()),
+        GetPage(name: 'chat.entrance', page: () => ChatEntranceScreen()),
         GetPage(name: 'chat.find_friend', page: () => ChatUserSearchScreen()),
         GetPage(name: 'chat.room', page: () => ChatRoomScreen()),
         GetPage(name: 'chat.room_setting', page: () => ChatRoomSettingScreen()),

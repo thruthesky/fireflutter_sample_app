@@ -2,7 +2,6 @@ import 'package:fireflutter_sample_app/global_variables.dart';
 import 'package:fireflutter_sample_app/keys.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'file:///Users/thruthesky/apps/fireflutter_sample_app/packages/fireflutter/test/chat.test.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -13,9 +12,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-
-    // ChatTest ct = ChatTest(ff);
-    // ct.runChatTest();
   }
 
   @override
@@ -120,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Divider(),
           RaisedButton(
-            onPressed: () => Get.toNamed('chat.front'),
+            onPressed: () => Get.toNamed('chat.entrance'),
             child: Text('Chat'),
           ),
           RaisedButton(
