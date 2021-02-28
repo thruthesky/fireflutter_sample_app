@@ -242,10 +242,10 @@ packages:
   fireflutter:
     dependency: "direct main"
     description:
-      path: "packages/fireflutter"
-      relative: true
-    source: path
-    version: "0.0.29"
+      name: fireflutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.48"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -262,7 +262,7 @@ packages:
       name: flutter_facebook_auth
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.3"
+    version: "1.0.2+2"
   flutter_image_compress:
     dependency: transitive
     description:
